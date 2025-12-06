@@ -1,25 +1,12 @@
-# fly.toml
+app = "nlproduction"
+primary_region = "arn" # или что у тебя там стоит
 
-# Имя приложения на Fly (посмотри в dashboard, секция "App name").
-# Если у тебя приложение называется иначе — замени "nlsound".
-app = "nlsound"
-
-# Регион, ближе всего к Эстонии — Стокгольм (arn).
-primary_region = "arn"
-
-[env]
-  # Порт, на котором внутри контейнера слушает твоя Flask/ Gunicorn
-  PORT = "8080"
-  FLASK_ENV = "production"
+[build]
+  dockerfile = "Dockerfile"
 
 [http_service]
-  internal_port = 8080    # должен совпадать с портом, на котором слушает приложение
+  internal_port = 80
   force_https = true
-  auto_start = true
-  auto_stop = false       # не давать машине засыпать
+  auto_stop_machines = "stop"
+  auto_start_machines = true
   min_machines_running = 1
-  processes = ["app"]
-
-[[vm]]
-  size = "shared-cpu-1x"
-  memory = "256mb"
