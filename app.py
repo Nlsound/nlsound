@@ -104,15 +104,22 @@ def send_email_via_mailgun(subject: str, text: str) -> None:
     if not all([api_key, domain, from_email, to_email]):
         raise RuntimeError('Mailgun config is not fully set via environment variables')
 
-    url = f"https://api.mailgun.net/v3/{domain}/messages"
-    auth = ("api", api_key)
-    data = {
-        "from": from_email,
-        "to": to_email,
-        "subject": subject,
-        "text": text,
-    }
-    resp = requests.post(url, auth=auth, data=data, timeout=10)
+    # Используем EU регион, диагностика в терминал
+    resp = requests.post(
+        f"https://api.eu.mailgun.net/v3/{os.getenv('MAILGUN_DOMAIN')}/messages",
+        auth=("api", os.getenv("MAILGUN_API_KEY")),
+        data={
+            "from": os.getenv("MAILGUN_FROM_EMAIL"),
+            "to": os.getenv("MAILGUN_TO_EMAIL"),
+            "subject": subject,
+            "text": text,
+        },
+        timeout=10,
+    )
+
+    print("MAILGUN STATUS:", resp.status_code)
+    print("MAILGUN RESPONSE:", resp.text)
+
     if resp.status_code not in (200, 202):
         app.logger.error("Mailgun error: status=%s, body=%s", resp.status_code, resp.text)
         raise RuntimeError(f"Mailgun request failed with status {resp.status_code}")
