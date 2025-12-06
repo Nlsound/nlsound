@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NL PRODUCTION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-06 00:00+0000\n"
+"PO-Revision-Date: 2025-12-06 00:00+0000\n"
+"Last-Translator: Auto <auto@example.com>\n"
+"Language-Team: Estonian\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/index.html
+msgid "NL PRODUCTION"
+msgstr "NL PRODUCTION"
+
+#: templates/index.html
+msgid "event technical solutions"
+msgstr "event technical solutions"
+
+#: templates/index.html
+msgid "Связаться с нами"
+msgstr "Võta meiega ühendust"
+
+#: templates/index.html
+msgid "Видео, свет, звук, трансляции — опишите задачу, и мы вернёмся к вам."
+msgstr "Video, valgus, heli, ülekanded — kirjelda oma projekti ja võtame sinuga ühendust."
+
+#: templates/index.html
+msgid "Спасибо! Заявка отправлена, мы с��яжемся с вами."
+msgstr "Aitäh! Sinu päring on saadetud, võtame sinuga peagi ühendust."
+
+#: templates/index.html
+msgid "Имя"
+msgstr "Eesnimi"
+
+#: templates/index.html
+msgid "Фамилия"
+msgstr "Perekonnanimi"
+
+#: templates/index.html
+msgid "Номер телефона"
+msgstr "Telefoninumber"
+
+#: templates/index.html
+msgid "E-mail"
+msgstr "E-post"
+
+#: templates/index.html
+msgid "Сообщение"
+msgstr "Sõnum"
+
+#: templates/index.html
+msgid "Отправить"
+msgstr "Saada"
+
+#: templates/index.html
+msgid "Введите имя"
+msgstr "Sisesta eesnimi"
+
+#: templates/index.html
+msgid "Введите фамилию"
+msgstr "Sisesta perekonnanimi"
+
+#: templates/index.html
+msgid "Ваш телефон"
+msgstr "Sinu telefoninumber"
+
+#: templates/index.html
+msgid "Коротко опишите задачу"
+msgstr "Kirjelda lühidalt oma projekti"

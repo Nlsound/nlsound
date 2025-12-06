@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ _('NL PRODUCTION') }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    :root {
+      --nl-black: #000000;
+      --nl-yellow: #ffcf00;
+      --text-light: #f6f6f6;
+      --text-dim: #cfcfcf;
+      --field-bg: rgba(255, 255, 255, 0.04);
+      --field-border: rgba(255, 255, 255, 0.12);
+      --field-focus: rgba(255, 207, 0, 0.65);
+      --container-w: 880px;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--nl-black);
+      color: var(--text-light);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: var(--text-light); text-decoration: none; }
+
+    .page-wrapper { display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* Top bar */
+    .top-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 24px;
+      z-index: 100;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0));
+      backdrop-filter: blur(2px);
+    }
+    .logo-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--nl-yellow);
+    }
+    .logo-img {
+      height: 32px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+      filter: drop-shadow(0 1px 6px rgba(0,0,0,0.5));
+    }
+
+    .lang-switcher { display: flex; gap: 10px; align-items: center; }
+    .lang-link {
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--text-dim);
+      opacity: 0.8;
+      transition: .2s ease;
+      background: rgba(255,255,255,0.04);
+    }
+    .lang-link:hover { color: #fff; opacity: 1; border-color: rgba(255,255,255,0.2); }
+    .active-lang { color: #000; background: var(--nl-yellow); border-color: var(--nl-yellow); opacity: 1; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 88vh;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background-color: #000;
+      background-image: url("{{ url_for('static', filename='images/hero.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,1) 100%);
+      z-index: 1;
+    }
+    .hero-overlay { display:none; }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 18px;
+      max-width: var(--container-w);
+      margin: 0 auto;
+    }
+    .hero-title {
+      margin: 0 0 8px 0;
+      font-size: clamp(36px, 8vw, 72px);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      color: var(--nl-yellow);
+      text-shadow: 0 6px 24px rgba(0,0,0,0.6);
+    }
+    .hero-subtitle {
+      margin: 0;
+      font-size: clamp(14px, 2.4vw, 20px);
+      color: #fff;
+      opacity: 0.92;
+      letter-spacing: 0.12em;
+      text-transform: lowercase;
+    }
+
+    /* Contact section */
+    .contact-section { background: #000; padding: 56px 18px 72px; }
+    .contact-container { max-width: var(--container-w); margin: 0 auto; }
+
+    .contact-header { text-align: center; }
+    .contact-section h2 {
+      margin: 0 0 6px 0;
+      font-size: clamp(24px, 4.5vw, 36px);
+      letter-spacing: 0.02em;
+    }
+    .contact-text { color: var(--text-dim); margin: 0 auto 22px; max-width: 680px; }
+
+    .alert-success {
+      background: rgba(18, 120, 36, 0.18);
+      border: 1px solid rgba(18, 120, 36, 0.35);
+      color: #c9f7d8;
+      padding: 12px 14px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+
+    .form-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+      backdrop-filter: blur(3px);
+    }
+
+    .contact-form { display: grid; gap: 16px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 900px) {
+      .form-row.cols-2 { grid-template-columns: 1fr 1fr; }
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+
+    label { font-size: 13px; color: var(--text-dim); }
+    input, textarea {
+      color: #fff;
+      background: var(--field-bg);
+      border: 1px solid var(--field-border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease, transform .06s ease;
+    }
+    input { height: 44px; }
+    textarea { min-height: 120px; resize: vertical; }
+
+    input::placeholder, textarea::placeholder { color: #9e9e9e; }
+    input:focus, textarea:focus {
+      border-color: var(--field-focus);
+      box-shadow: 0 0 0 3px rgba(255,207,0,0.16);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .btn-row { display: grid; grid-template-columns: 1fr; }
+
+    .btn-submit {
+      justify-self: start;
+      appearance: none;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: var(--nl-yellow);
+      color: #000;
+      font-weight: 800;
+      letter-spacing: .06em;
+      padding: 12px 20px;
+      height: 46px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform .06s ease, filter .18s ease, box-shadow .22s ease;
+      box-shadow: 0 10px 28px rgba(255,207,0,0.18);
+    }
+    .btn-submit:hover { filter: brightness(1.02); box-shadow: 0 12px 36px rgba(255,207,0,0.26); }
+    .btn-submit:active { transform: translateY(1px); }
+
+    /* reduce extra space */
+    .hero { margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <header class="top-bar">
+      <div class="logo-text" aria-label="Logo">
+        <img class="logo-img" src="{{ url_for('static', filename='images/logo.webp') }}" alt="NL Production logo">
+      </div>
+      <nav class="lang-switcher">
+        {% for lang in LANGUAGES %}
+          <a
+            href="{{ url_for('index', lang=lang) }}"
+            class="lang-link {% if lang == current_lang %}active-lang{% endif %}"
+            aria-current="{% if lang == current_lang %}true{% else %}false{% endif %}"
+          >
+            {{ lang.upper() }}
+          </a>
+        {% endfor %}
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">{{ _('NL PRODUCTION') }}</h1>
+        <p class="hero-subtitle">{{ _('event technical solutions') }}</p>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-container">
+        <div class="contact-header">
+          <h2>{{ _('Связаться с нами') }}</h2>
+          <p class="contact-text">
+            {{ _('Видео, свет, звук, трансляции — опишите задачу, и мы вернёмся к вам.') }}
+          </p>
+        </div>
+
+        {% if message_sent %}
+          <div class="alert-success">
+            {{ _('Спасибо! Заявка отправлена, мы свяжемся с вами.') }}
+          </div>
+        {% endif %}
+
+        <div class="form-card">
+          <form method="post" class="contact-form" action="{{ url_for('index', lang=current_lang) }}">
+            <div class="form-row cols-2">
+              <div class="form-group">
+                <label for="name">{{ _('Имя') }}</label>
+                <input type="text" id="name" name="name" placeholder="{{ _('Введите имя') }}">
+              </div>
+              <div class="form-group">
+                <label for="phone">{{ _('Номер телефона') }}</label>
+                <input type="tel" id="phone" name="phone" placeholder="{{ _('Ваш телефон') }}">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">{{ _('E-mail') }}</label>
+                <input type="email" id="email" name="email" required placeholder="name@example.com">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="message">{{ _('Сообщение') }}</label>
+                <textarea id="message" name="message" rows="4" placeholder="{{ _('Коротко опишите задачу') }}"></textarea>
+              </div>
+            </div>
+
+            <div class="btn-row">
+              <button type="submit" class="btn-submit">
+                {{ _('Отправить') }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
