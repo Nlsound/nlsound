@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request, g, url_for
+from flask import Flask, render_template, request, g, url_for, flash, redirect
 from flask_babel import Babel, gettext, get_locale
+import os
+import requests
 
 app = Flask(__name__)
 
@@ -9,6 +11,12 @@ app.config['SECRET_KEY'] = 'change-this-secret'
 # Babel / i18n configuration
 app.config['BABEL_DEFAULT_LOCALE'] = 'ru'
 app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
+
+# Mailgun configuration (from environment)
+app.config['MAILGUN_API_KEY'] = os.environ.get('MAILGUN_API_KEY')
+app.config['MAILGUN_DOMAIN'] = os.environ.get('MAILGUN_DOMAIN')
+app.config['MAILGUN_FROM_EMAIL'] = os.environ.get('MAILGUN_FROM_EMAIL')
+app.config['MAILGUN_TO_EMAIL'] = os.environ.get('MAILGUN_TO_EMAIL')
 
 # Supported languages
 LANGUAGES = ['ru', 'en', 'et']
@@ -82,31 +90,68 @@ def inject_globals():
     }
 
 
+def send_email_via_mailgun(subject: str, text: str) -> None:
+    """
+    Отправка email через Mailgun.
+    Используется HTTP POST к https://api.mailgun.net/v3/<domain>/messages
+    Авторизация: basic auth ('api', MAILGUN_API_KEY).
+    """
+    api_key = app.config.get('MAILGUN_API_KEY')
+    domain = app.config.get('MAILGUN_DOMAIN')
+    from_email = app.config.get('MAILGUN_FROM_EMAIL')
+    to_email = app.config.get('MAILGUN_TO_EMAIL')
+
+    if not all([api_key, domain, from_email, to_email]):
+        raise RuntimeError('Mailgun config is not fully set via environment variables')
+
+    url = f"https://api.mailgun.net/v3/{domain}/messages"
+    auth = ("api", api_key)
+    data = {
+        "from": from_email,
+        "to": to_email,
+        "subject": subject,
+        "text": text,
+    }
+    resp = requests.post(url, auth=auth, data=data, timeout=10)
+    if resp.status_code not in (200, 202):
+        app.logger.error("Mailgun error: status=%s, body=%s", resp.status_code, resp.text)
+        raise RuntimeError(f"Mailgun request failed with status {resp.status_code}")
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    message_sent = False
-
     if request.method == 'POST':
-        name = request.form.get('name')
-        phone = request.form.get('phone')
-        email = request.form.get('email')
-        message = request.form.get('message')
+        name = (request.form.get('name') or '').strip()
+        phone = (request.form.get('phone') or '').strip()
+        email = (request.form.get('email') or '').strip()
+        message = (request.form.get('message') or '').strip()
 
-        # Минимальная валидация: email обязателен для успешной отправки
-        if email:
-            # Логируем отправленные данные (дальше можно добавить отправку на email)
-            app.logger.info(
-                "NL PRODUCTION contact: name=%s, phone=%s, email=%s, message=%s",
-                name,
-                phone,
-                email,
+        # Валидация обязательных полей
+        if not email or not message:
+            flash(gettext('Пожалуйста, укажите e-mail и сообщение.'), 'error')
+            return redirect(url_for('index', lang=g.get('current_lang', app.config.get('BABEL_DEFAULT_LOCALE', 'ru'))))
+
+        try:
+            subject = "Новое сообщение с портфолио сайта"
+            body_lines = [
+                f"Имя: {name or '-'}",
+                f"Телефон: {phone or '-'}",
+                f"E-mail: {email}",
+                "",
+                "Сообщение:",
                 message,
-            )
-            message_sent = True
-        else:
-            message_sent = False
+            ]
+            text = "\n".join(body_lines)
 
-    return render_template('index.html', message_sent=message_sent)
+            send_email_via_mailgun(subject, text)
+
+            flash(gettext('Спасибо! Заявка отправлена, мы свяжемся с вами.'), 'success')
+            return redirect(url_for('index', lang=g.get('current_lang', app.config.get('BABEL_DEFAULT_LOCALE', 'ru'))))
+        except Exception:
+            app.logger.exception("Failed to send contact message via Mailgun")
+            flash(gettext('Не удалось отправить сообщение. Попробуйте позже.'), 'error')
+            return redirect(url_for('index', lang=g.get('current_lang', app.config.get('BABEL_DEFAULT_LOCALE', 'ru'))))
+
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
