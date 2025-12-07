@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, g, url_for, flash, redirect
+from flask import Flask, render_template, request, g, url_for, flash, redirect, send_from_directory
 from flask_babel import Babel, gettext, get_locale
 import os
 import requests
@@ -160,6 +160,14 @@ def index():
 
     return render_template('index.html')
 
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('static', 'sitemap.xml')
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('static', 'robots.txt')
 
 if __name__ == '__main__':
     # Для разработки оставляем debug=True. На проде заменить на False / убрать.
