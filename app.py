@@ -138,7 +138,7 @@ def index():
             return redirect(url_for('index', lang=g.get('current_lang', app.config.get('BABEL_DEFAULT_LOCALE', 'ru'))))
 
         try:
-            subject = "Новое сообщение с портфолио сайта"
+            subject = "ЗАЯВКА NLProduction"
             body_lines = [
                 f"Имя: {name or '-'}",
                 f"Телефон: {phone or '-'}",
