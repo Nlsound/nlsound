@@ -169,6 +169,12 @@ def sitemap():
 def robots():
     return send_from_directory('static', 'robots.txt')
 
+@app.route('/google3193fab71dd9080d.html')
+
+def google_verify():
+
+    return app.send_static_file('google3193fab71dd9080d.html')
+
 if __name__ == '__main__':
     # Для разработки оставляем debug=True. На проде заменить на False / убрать.
     app.run(debug=True)
