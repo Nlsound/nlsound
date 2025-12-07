@@ -1,0 +1,15 @@
+app = "nlproduction"
+primary_region = "arn"
+
+[http_service]
+auto_start_machines = true
+auto_stop_machines = false        # всегда включён
+force_https = true
+internal_port = 8080              # порт, который должен слушать Flask
+min_machines_running = 1          # держать 1 сервер всегда
+processes = ["app"]
+
+[[vm]]
+cpu_kind = "shared"
+cpus = 1
+memory = "1gb"
