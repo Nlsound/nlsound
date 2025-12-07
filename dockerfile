@@ -1,11 +1,18 @@
-# Берём лёгкий nginx
-FROM nginx:alpine
+# syntax=docker/dockerfile:1
 
-# Кладём все файлы сайта в стандартную папку nginx
-COPY . /usr/share/nginx/html
+ARG PYTHON_VERSION=3.12.12
 
-# Открываем порт 80
-EXPOSE 80
+FROM python:${PYTHON_VERSION}-slim
 
-# Запускаем nginx
-CMD ["nginx", "-g", "daemon off;"]
+LABEL fly_launch_runtime="flask"
+
+WORKDIR /code
+
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
+COPY . .
+
+EXPOSE 8080
+
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=8080"]
