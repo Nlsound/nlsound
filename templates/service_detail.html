@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ _('Услуга') }} — {{ {
+    'sound': _('Звук'),
+    'light': _('Свет'),
+    'video': _('Видео'),
+    'stage': _('Сцена'),
+    }[slug] }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    :root { --nl-black:#000; --nl-yellow:#ffcf00; --text-light:#f6f6f6; --text-dim:#cfcfcf; --container-w:880px; }
+    html, body { background:#000; color:#f6f6f6; margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    .page { min-height:100vh; display:flex; flex-direction:column; }
+    header.top-bar { position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; padding:14px 24px; background:#000; border-bottom:1px solid rgba(255,255,255,0.08); }
+    .site-nav { display:none; gap:16px; align-items:center; }
+    .nav-link { font-size:14px; color:#fff; opacity:.92; }
+    .nav-link:hover { text-decoration: none; }
+    @media (min-width: 720px) { .site-nav { display:flex; } .lang-switcher { display:flex; } }
+    html { scroll-behavior: smooth; }
+    .hero, .services-section, .contact-section { scroll-margin-top: 78px; }
+    /* Mobile burger and drawer */
+    .burger-btn { display: none; position: fixed; top: 12px; right: 12px; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.18); background: rgba(0,0,0,0.5); border-radius: 10px; cursor: pointer; z-index: 120; display: grid; place-items: center; }
+    .burger-btn .lines { position: relative; width: 18px; height: 2px; background: #fff; }
+    .burger-btn .lines::before, .burger-btn .lines::after { content: ""; position: absolute; left: 0; width: 18px; height: 2px; background: #fff; transition: transform .2s ease, top .2s ease, opacity .2s ease; }
+    .burger-btn .lines::before { top: -6px; }
+    .burger-btn .lines::after { top: 6px; }
+    .burger-btn.active .lines { background: transparent; }
+    .burger-btn.active .lines::before { top: 0; transform: rotate(45deg); }
+    .burger-btn.active .lines::after { top: 0; transform: rotate(-45deg); }
+
+    .mobile-drawer { position: fixed; top: 0; right: 0; height: 100vh; width: 270px; background: rgba(0,0,0,0.96); border-left: 1px solid rgba(255,255,255,0.1); transform: translateX(100%); transition: transform .25s ease; z-index: 110; padding: 72px 18px 18px; display: flex; flex-direction: column; gap: 10px; }
+    .mobile-drawer.open { transform: translateX(0); }
+    .mobile-drawer a { color: #fff; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; padding: 12px 10px; border-radius: 10px; }
+    .mobile-drawer a:hover { background: rgba(255,255,255,0.08); }
+    .drawer-lang { margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; gap: 10px; }
+
+    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); opacity: 0; pointer-events: none; transition: opacity .2s ease; z-index: 105; }
+    .drawer-overlay.show { opacity: 1; pointer-events: auto; }
+
+    @media (max-width: 719px) {
+      .site-nav { display: none !important; }
+      .burger-btn { display: grid; }
+      .lang-switcher { display: none; }
+    }
+    .logo-img { height:28px; }
+    .lang-switcher { display:none; gap:10px; }
+    .lang-link { font-size:13px; padding:6px 10px; border-radius:999px; color:#cfcfcf; background:rgba(255,255,255,0.04); border:1px solid transparent; }
+    .active-lang { color:#000; background:var(--nl-yellow); border-color:var(--nl-yellow); }
+
+    .hero { padding:40px 18px 10px; text-align:center; background:#000; }
+    .hero h1 { margin:0; color:var(--nl-yellow); letter-spacing:.06em; font-size: clamp(28px, 6vw, 48px); }
+    .hero p { margin:6px 0 0; color:#ddd; }
+
+    .container { max-width:var(--container-w); margin:0 auto; padding:0 18px 42px; }
+    .grid { display:grid; grid-template-columns: 1fr; gap:18px; }
+    @media (min-width: 900px) { .grid { grid-template-columns: 1.2fr .8fr; } }
+
+    .card { background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:18px; box-shadow:0 10px 28px rgba(0,0,0,.28); }
+    .card h2 { margin:0 0 10px; font-size:20px; letter-spacing:.02em; }
+    .list { margin:8px 0 0; padding-left:18px; color:#cfcfcf; }
+    .list li { margin:8px 0; }
+
+    .cta { margin-top:14px; display:inline-block; background:var(--nl-yellow); color:#000; font-weight:800; letter-spacing:.06em; padding:10px 14px; border-radius:10px; box-shadow:0 8px 22px rgba(255,207,0,0.18); }
+    .cta:hover { filter:brightness(1.04); }
+
+    .back { display:inline-block; margin:12px 0; color:#cfcfcf; }
+    .back:hover { color:#fff; text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="top-bar">
+      <div class="logo-text" aria-label="Logo">
+        <a href="{{ url_for('index', lang=current_lang) }}" aria-label="{{ _('На главную') }}">
+          <img class="logo-img" src="{{ url_for('static', filename='images/logo.webp') }}" alt="NL Production logo">
+        </a>
+      </div>
+      <nav class="lang-switcher">
+        {% for lang in LANGUAGES %}
+          <a href="{{ url_for('service', slug=slug, lang=lang) }}" class="lang-link {% if lang == current_lang %}active-lang{% endif %}">{{ lang.upper() }}</a>
+        {% endfor %}
+      </nav>
+      <button class="burger-btn" id="burgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+        <span class="lines"></span>
+      </button>
+    </header>
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true" aria-label="Mobile menu">
+      <a href="{{ url_for('index', lang=current_lang) }}#top" class="nav-link">{{ _('Главная') }}</a>
+      <a href="{{ url_for('index', lang=current_lang) }}#services" class="nav-link">{{ _('Услуги') }}</a>
+      <a href="#contact" class="nav-link">{{ _('Контакт') }}</a>
+      <div class="drawer-lang">
+        {% for lang in LANGUAGES %}
+          <a href="{{ url_for('service', slug=slug, lang=lang) }}" class="lang-link {% if lang == current_lang %}active-lang{% endif %}">{{ lang.upper() }}</a>
+        {% endfor %}
+      </div>
+    </aside>
+
+    <nav class="site-nav">
+      <a href="{{ url_for('index', lang=current_lang) }}#top" class="nav-link">{{ _('Главная') }}</a>
+      <a href="{{ url_for('index', lang=current_lang) }}#services" class="nav-link">{{ _('Услуги') }}</a>
+      <a href="#contact" class="nav-link">{{ _('Контакт') }}</a>
+    </nav>
+
+    <section class="hero">
+      <h1>{{ {
+        'sound': _('Звук'),
+        'light': _('Свет'),
+        'video': _('Видео'),
+        'stage': _('Сцена'),
+        }[slug] }}</h1>
+      <p>{{ _('услуги и решения для мероприятий') }}</p>
+    </section>
+
+    <div class="container">
+      <a class="back" href="{{ url_for('index', lang=current_lang) }}">← {{ _('На главную') }}</a>
+      <div class="grid">
+        <div class="card">
+          <h2>{{ _('Что входит') }}</h2>
+          <ul class="list">
+            {% if slug == 'sound' %}
+              <li>{{ _('АРЕНДА ЗВУКОВОГО ОБОРУДОВАНИЯ') }}</li>
+              <li>{{ _('ОЗВУЧИВАНИЕ МЕРОПРИЯТИЙ ЛЮБОГО МАСШТАБА:') }} {{ _('КОНЦЕРТЫ, ФЕСТИВАЛИ, КОРПОРАТИВЫ, КОНФЕРЕНЦИИ, СЕМИНАРЫ, ЧАСТНЫЕ МЕРОПРИЯТИЯ') }}</li>
+              <li>{{ _('НАСТРОЙКА И КАЛИБРОВКА ЗВУКОВЫХ СИСТЕМ') }}</li>
+              <li>{{ _('РАБОТА ЗВУКОРЕЖИССЁРА / FOH / MONITOR ENGINEER') }}</li>
+              <li>{{ _('ЗАПИСЬ ЖИВОГО ЗВУКА И МЕРОПРИЯТИЙ') }}</li>
+            {% elif slug == 'light' %}
+              <li>{{ _('АРЕНДА СВЕТОВОГО ОБОРУДОВАНИЯ') }}</li>
+              <li>{{ _('СВЕТОВОЕ ОФОРМЛЕНИЕ МЕРОПРИЯТИЙ') }}</li>
+              <li>{{ _('ПРОГРАММИРОВАНИЕ И УПРАВЛЕНИЕ СВЕТОМ') }}</li>
+              <li>{{ _('РАБОТА СВЕТОРЕЖИССЁРА') }}</li>
+            {% elif slug == 'video' %}
+              <li>{{ _('АРЕНДА ВИДЕООБОРУДОВАНИЯ:') }} {{ _('LED-ЭКРАНЫ, ТЕЛЕВИЗОРЫ, ПРОЕКТОРЫ') }}</li>
+              <li>{{ _('ВИДЕОТРАНСЛЯЦИИ И СТРИМИНГ МЕРОПРИЯТИЙ') }}</li>
+              <li>{{ _('СЪЁМКА МЕРОПРИЯТИЙ') }}</li>
+              <li>{{ _('ВИДЕО-КОММУТАЦИЯ И РЕЖИССУРА ТРАНСЛЯЦИЙ') }}</li>
+              <li>{{ _('ПРЕЗЕНТАЦИОННЫЕ РЕШЕНИЯ') }} ({{ _('PROPRESENTER, ВИДЕО-КОНТЕНТ') }})</li>
+            {% elif slug == 'stage' %}
+              <li>{{ _('АРЕНДА СЦЕН И ПОДИУМОВ') }}</li>
+              <li>{{ _('ФЕРМЫ, РИГГИНГ, КОНСТРУКЦИИ') }}</li>
+              <li>{{ _('ПОКРЫТИЕ, ПОДЪЁМНИКИ') }}</li>
+            {% elif slug == 'video' %}
+              <li>{{ _('АРЕНДА ВИДЕООБОРУДОВАНИЯ:') }} {{ _('LED-ЭКРАНЫ, ТЕЛЕВИЗОРЫ, ПРОЕКТОРЫ') }}</li>
+              <li>{{ _('ВИДЕОТРАНСЛЯЦИИ И СТРИМИНГ МЕРОПРИЯТИЙ') }}</li>
+              <li>{{ _('СЪЁМКА МЕРОПРИЯТИЙ') }}</li>
+              <li>{{ _('ВИДЕО-КОММУТАЦИЯ И РЕЖИССУРА ТРАНСЛЯЦИЙ') }}</li>
+              <li>{{ _('ПРЕЗЕНТАЦИОННЫЕ РЕШЕНИЯ') }} ({{ _('PROPRESENTER, ВИДЕО-КОНТЕНТ') }})</li>
+              <li>{{ _('МНОГОКАМЕРНЫЕ ТРАНСЛЯЦИИ') }}</li>
+              <li>{{ _('ПЛОЩАДКИ YOUTUBE / FACEBOOK / RTMP') }}</li>
+              <li>{{ _('ГРАФИКА, ЗАПИСЬ, МОНИТОРИНГ') }}</li>
+            {% endif %}
+          </ul>
+          <a class="cta" href="{{ url_for('index', lang=current_lang) }}#contact">{{ _('Оставить заявку') }}</a>
+        </div>
+        <div class="card">
+          <h2>{{ _('Как мы работаем') }}</h2>
+          <ul class="list">
+            <li>{{ _('Аудит задачи и консультация') }}</li>
+            <li>{{ _('По��бор оборудования и решение под бюджет') }}</li>
+            <li>{{ _('Монтаж, запуск и сопровождение на площадке') }}</li>
+            <li>{{ _('Демон��аж и передача материалов (при необходимости)') }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-container">
+        <div class="contact-header">
+          <h2>{{ _('Связаться с нами') }}</h2>
+          <p class="contact-text">
+            {{ _('Видео, свет, звук, трансляции — опишите задачу, и мы вернёмся к вам.') }}
+          </p>
+        </div>
+
+        <div class="form-card">
+          <form method="post" class="contact-form" action="{{ url_for('index', lang=current_lang) }}">
+            <div class="form-row cols-2">
+              <div class="form-group">
+                <label for="name">{{ _('Имя') }}</label>
+                <input type="text" id="name" name="name" placeholder="{{ _('Введите имя') }}">
+              </div>
+              <div class="form-group">
+                <label for="phone">{{ _('Номер телефона') }}</label>
+                <input type="tel" id="phone" name="phone" placeholder="{{ _('Ваш телефон') }}">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">{{ _('E-mail') }}</label>
+                <input type="email" id="email" name="email" required placeholder="name@example.com">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="message">{{ _('Сообщение') }}</label>
+                <textarea id="message" name="message" rows="4" placeholder="{{ _('Коротко опишите задачу') }}"></textarea>
+              </div>
+            </div>
+
+            <div class="btn-row">
+              <button type="submit" class="btn-submit">
+                {{ _('Отправить') }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    (function(){
+      const btn = document.getElementById('burgerBtn');
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      if (!btn || !drawer || !overlay) return;
+      function openDrawer(){
+        drawer.classList.add('open');
+        overlay.classList.add('show');
+        btn.classList.add('active');
+        btn.setAttribute('aria-expanded','true');
+        document.documentElement.style.overflow = 'hidden';
+      }
+      function closeDrawer(){
+        drawer.classList.remove('open');
+        overlay.classList.remove('show');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded','false');
+        document.documentElement.style.overflow = '';
+      }
+      btn.addEventListener('click', () => {
+        if (drawer.classList.contains('open')) closeDrawer();
+        else openDrawer();
+      });
+      overlay.addEventListener('click', closeDrawer);
+      drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+    })();
+  </script>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-main">
+        <div class="footer-brand">NL Production</div>
+        <div class="footer-desc">Event technical solutions / Технический продакшн мероприятий</div>
+        <div class="footer-contact">
+          <a class="footer-link" href="mailto:info@nlproduction.ee">info@nlproduction.ee</a>
+          <span class="footer-sep">•</span>
+          <a class="footer-link" href="tel:+37200000000">+372 0000 0000</a>
+          <span class="footer-sep">•</span>
+          <span>Ida-Virumaa, Estonia</span>
+        </div>
+        <div class="footer-copy">© NL Production, <script>document.write(new Date().getFullYear())</script>. {{ _('Все права защищены.') }}</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

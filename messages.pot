@@ -1,14 +1,17 @@
-
+# Translations template for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: NL PRODUCTION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-12-19 02:33+0300\n"
-"PO-Revision-Date: 2025-12-06 00:00+0000\n"
-"Last-Translator: Auto <auto@example.com>\n"
-"Language: en\n"
-"Language-Team: English\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +23,7 @@ msgstr ""
 
 #: app.py:154 templates/index.html:470
 msgid "Спасибо! Заявка отправлена, мы свяжемся с вами."
-msgstr "Thank you! Your request has been sent, we will contact you soon."
+msgstr ""
 
 #: app.py:158
 msgid "Не удалось отправить сообщение. Попробуйте позже."
@@ -32,307 +35,269 @@ msgstr ""
 
 #: templates/index.html:402 templates/service_detail.html:64
 msgid "Главная"
-msgstr "Home"
+msgstr ""
 
 #: templates/index.html:403 templates/index.html:417
 #: templates/service_detail.html:65
 msgid "Услуги"
-msgstr "Services"
+msgstr ""
 
 #: templates/index.html:404 templates/service_detail.html:66
 msgid "Контакт"
-msgstr "Contact"
+msgstr ""
 
 #: templates/index.html:410
 msgid "NL PRODUCTION"
-msgstr "NL PRODUCTION"
+msgstr ""
 
 #: templates/index.html:411
 msgid "event technical solutions"
-msgstr "event technical solutions"
+msgstr ""
 
 #: templates/index.html:420 templates/service_detail.html:6
 #: templates/service_detail.html:71
 msgid "Звук"
-msgstr "Sound"
+msgstr ""
 
 #: templates/index.html:422
-#, fuzzy
 msgid "Аренда звукового оборудования"
-msgstr "SOUND EQUIPMENT RENTAL"
+msgstr ""
 
 #: templates/index.html:423
-#, fuzzy
 msgid "Озвучивание мероприятий"
-msgstr "SOUND FOR EVENTS OF ANY SCALE:"
+msgstr ""
 
 #: templates/index.html:424
 msgid "Саунд‑инженер, настройка систем"
-msgstr "Sound engineer, system tuning"
+msgstr ""
 
 #: templates/index.html:426 templates/index.html:435 templates/index.html:444
 #: templates/index.html:453
 msgid "Подробнее"
-msgstr "Learn more"
+msgstr ""
 
 #: templates/index.html:429 templates/service_detail.html:7
 #: templates/service_detail.html:72
 msgid "Свет"
-msgstr "Light"
+msgstr ""
 
 #: templates/index.html:431
-#, fuzzy
 msgid "Аренда светового оборудования"
-msgstr "LIGHTING EQUIPMENT RENTAL"
+msgstr ""
 
 #: templates/index.html:432
-#, fuzzy
 msgid "Световое оформление и шоу"
-msgstr "EVENT LIGHTING DESIGN"
+msgstr ""
 
 #: templates/index.html:433
-#, fuzzy
 msgid "Программирование и управление"
-msgstr "LIGHT PROGRAMMING AND OPERATION"
+msgstr ""
 
 #: templates/index.html:438 templates/service_detail.html:8
 #: templates/service_detail.html:73
 msgid "Видео"
-msgstr "Video"
+msgstr ""
 
 #: templates/index.html:440
-#, fuzzy
 msgid "Трансляции и стриминг"
-msgstr "LIVE VIDEO BROADCASTS AND STREAMING"
+msgstr ""
 
 #: templates/index.html:441
 msgid "Многокамерные трансляции"
-msgstr "Multi‑camera live"
+msgstr ""
 
 #: templates/index.html:442
 msgid "Площадки YouTube / Facebook / RTMP"
-msgstr "YouTube / Facebook / RTMP platforms"
+msgstr ""
 
 #: templates/index.html:447 templates/service_detail.html:9
 #: templates/service_detail.html:74
 msgid "Сцена"
-msgstr "Stage"
+msgstr ""
 
 #: templates/index.html:449
 msgid "Аренда сцен и подиумов"
-msgstr "Stage and riser rental"
+msgstr ""
 
 #: templates/index.html:450
 msgid "Фермы, риггинг, конструкции"
-msgstr "Truss, rigging, structures"
+msgstr ""
 
 #: templates/index.html:451
 msgid "Покрытие, подъёмники"
-msgstr "Decking, lifts"
+msgstr ""
 
 #: templates/index.html:462 templates/service_detail.html:135
 msgid "Связаться с нами"
-msgstr "Contact us"
+msgstr ""
 
 #: templates/index.html:464 templates/service_detail.html:137
 msgid "Видео, свет, звук, трансляции — опишите задачу, и мы вернёмся к вам."
 msgstr ""
-"Video, light, sound, streaming — describe your project and we’ll get back"
-" to you."
 
 #: templates/index.html:478 templates/service_detail.html:145
 msgid "Имя"
-msgstr "First name"
+msgstr ""
 
 #: templates/index.html:479 templates/service_detail.html:146
 msgid "Введите имя"
-msgstr "Enter first name"
+msgstr ""
 
 #: templates/index.html:482 templates/service_detail.html:149
 msgid "Номер телефона"
-msgstr "Phone number"
+msgstr ""
 
 #: templates/index.html:483 templates/service_detail.html:150
 msgid "Ваш телефон"
-msgstr "Your phone number"
+msgstr ""
 
 #: templates/index.html:489 templates/service_detail.html:156
 msgid "E-mail"
-msgstr "E-mail"
+msgstr ""
 
 #: templates/index.html:496 templates/service_detail.html:163
 msgid "Сообщение"
-msgstr "Message"
+msgstr ""
 
 #: templates/index.html:497 templates/service_detail.html:164
 msgid "Коротко опишите задачу"
-msgstr "Briefly describe your project"
+msgstr ""
 
 #: templates/index.html:503 templates/service_detail.html:170
 msgid "Отправить"
-msgstr "Send"
+msgstr ""
 
 #: templates/service_detail.html:5
-#, fuzzy
 msgid "Услуга"
-msgstr "Service"
+msgstr ""
 
 #: templates/service_detail.html:76
 msgid "услуги и решения для мероприятий"
-msgstr "services and solutions for events"
+msgstr ""
 
 #: templates/service_detail.html:80
 msgid "На главную"
-msgstr "Back to home"
+msgstr ""
 
 #: templates/service_detail.html:83
 msgid "Что входит"
-msgstr "What’s included"
+msgstr ""
 
 #: templates/service_detail.html:86
 msgid "АРЕНДА ЗВУКОВОГО ОБОРУДОВАНИЯ"
-msgstr "SOUND EQUIPMENT RENTAL"
+msgstr ""
 
 #: templates/service_detail.html:87
 msgid "ОЗВУЧИВАНИЕ МЕРОПРИЯТИЙ ЛЮБОГО МАСШТАБА:"
-msgstr "SOUND FOR EVENTS OF ANY SCALE:"
+msgstr ""
 
 #: templates/service_detail.html:87
-#, fuzzy
 msgid ""
 "КОНЦЕРТЫ, ФЕСТИВАЛИ, КОРПОРАТИВЫ, КОНФЕРЕНЦИИ, СЕМИНАРЫ, ЧАСТНЫЕ "
 "МЕРОПРИЯТИЯ"
-msgstr "CONCERTS, FESTIVALS, CORPORATE, CONFERENCES, SEMINARS, PRIVATE EVENTS"
+msgstr ""
 
 #: templates/service_detail.html:88
 msgid "НАСТРОЙКА И КАЛИБРОВКА ЗВУКОВЫХ СИСТЕМ"
-msgstr "SOUND SYSTEM TUNING AND CALIBRATION"
+msgstr ""
 
 #: templates/service_detail.html:89
 msgid "РАБОТА ЗВУКОРЕЖИССЁРА / FOH / MONITOR ENGINEER"
-msgstr "SOUND ENGINEER / FOH / MONITOR ENGINEER"
+msgstr ""
 
 #: templates/service_detail.html:90
 msgid "ЗАПИСЬ ЖИВОГО ЗВУКА И МЕРОПРИЯТИЙ"
-msgstr "LIVE SOUND AND EVENT RECORDING"
+msgstr ""
 
 #: templates/service_detail.html:92
 msgid "АРЕНДА СВЕТОВОГО ОБОРУДОВАНИЯ"
-msgstr "LIGHTING EQUIPMENT RENTAL"
+msgstr ""
 
 #: templates/service_detail.html:93
 msgid "СВЕТОВОЕ ОФОРМЛЕНИЕ МЕРОПРИЯТИЙ"
-msgstr "EVENT LIGHTING DESIGN"
+msgstr ""
 
 #: templates/service_detail.html:94
 msgid "ПРОГРАММИРОВАНИЕ И УПРАВЛЕНИЕ СВЕТОМ"
-msgstr "LIGHT PROGRAMMING AND OPERATION"
+msgstr ""
 
 #: templates/service_detail.html:95
 msgid "РАБОТА СВЕТОРЕЖИССЁРА"
-msgstr "LIGHTING OPERATOR / DESIGNER"
+msgstr ""
 
 #: templates/service_detail.html:97 templates/service_detail.html:107
 msgid "АРЕНДА ВИДЕООБОРУДОВАНИЯ:"
-msgstr "VIDEO EQUIPMENT RENTAL:"
+msgstr ""
 
 #: templates/service_detail.html:97 templates/service_detail.html:107
 msgid "LED-ЭКРАНЫ, ТЕЛЕВИЗОРЫ, ПРОЕКТОРЫ"
-msgstr "LED SCREENS, TVs, PROJECTORS"
+msgstr ""
 
 #: templates/service_detail.html:98 templates/service_detail.html:108
 msgid "ВИДЕОТРАНСЛЯЦИИ И СТРИМИНГ МЕРОПРИЯТИЙ"
-msgstr "LIVE VIDEO BROADCASTS AND STREAMING"
+msgstr ""
 
 #: templates/service_detail.html:99 templates/service_detail.html:109
 msgid "СЪЁМКА МЕРОПРИЯТИЙ"
-msgstr "EVENT FILMING"
+msgstr ""
 
 #: templates/service_detail.html:100 templates/service_detail.html:110
 msgid "ВИДЕО-КОММУТАЦИЯ И РЕЖИССУРА ТРАНСЛЯЦИЙ"
-msgstr "VIDEO SWITCHING AND LIVE DIRECTION"
+msgstr ""
 
 #: templates/service_detail.html:101 templates/service_detail.html:111
 msgid "ПРЕЗЕНТАЦИОННЫЕ РЕШЕНИЯ"
-msgstr "PRESENTATION SOLUTIONS"
+msgstr ""
 
 #: templates/service_detail.html:101 templates/service_detail.html:111
 msgid "PROPRESENTER, ВИДЕО-КОНТЕНТ"
-msgstr "PROPRESENTER, VIDEO CONTENT"
+msgstr ""
 
 #: templates/service_detail.html:103
 msgid "АРЕНДА СЦЕН И ПОДИУМОВ"
-msgstr "STAGE AND RISER RENTAL"
+msgstr ""
 
 #: templates/service_detail.html:104
 msgid "ФЕРМЫ, РИГГИНГ, КОНСТРУКЦИИ"
-msgstr "TRUSS, RIGGING, STRUCTURES"
+msgstr ""
 
 #: templates/service_detail.html:105
 msgid "ПОКРЫТИЕ, ПОДЪЁМНИКИ"
-msgstr "DECKING, LIFTS"
+msgstr ""
 
 #: templates/service_detail.html:112
 msgid "МНОГОКАМЕРНЫЕ ТРАНСЛЯЦИИ"
-msgstr "MULTI‑CAMERA LIVE"
+msgstr ""
 
 #: templates/service_detail.html:113
 msgid "ПЛОЩАДКИ YOUTUBE / FACEBOOK / RTMP"
-msgstr "YOUTUBE / FACEBOOK / RTMP PLATFORMS"
+msgstr ""
 
 #: templates/service_detail.html:114
 msgid "ГРАФИКА, ЗАПИСЬ, МОНИТОРИНГ"
-msgstr "GRAPHICS, RECORDING, MONITORING"
+msgstr ""
 
 #: templates/service_detail.html:117
 msgid "Оставить заявку"
-msgstr "Send request"
+msgstr ""
 
 #: templates/service_detail.html:120
 msgid "Как мы работаем"
-msgstr "How we work"
+msgstr ""
 
 #: templates/service_detail.html:122
 msgid "Аудит задачи и консультация"
-msgstr "Task audit and consultation"
+msgstr ""
 
 #: templates/service_detail.html:123
 msgid "Подбор оборудования и решение под бюджет"
-msgstr "Equipment selection and budget‑fit solution"
+msgstr ""
 
 #: templates/service_detail.html:124
 msgid "Монтаж, запуск и сопровождение на площадке"
-msgstr "Setup, run and on‑site support"
+msgstr ""
 
 #: templates/service_detail.html:125
-#, fuzzy
 msgid "Демонтаж и передача материалов (при необходимости)"
-msgstr "Teardown and deliverables (if needed)"
-
-#~ msgid "Фамилия"
-#~ msgstr "Last name"
-
-#~ msgid "Введите фамилию"
-#~ msgstr "Enter last name"
-
-#~ msgid "Озвучивание мероприятий, аренда звука, микширование, DJ/PA."
-#~ msgstr "Event sound reinforcement, sound rental, mixing, DJ/PA."
-
-#~ msgid "Световое оформление, аренда света, программирование шоу."
-#~ msgstr "Lighting design, light rental, show programming."
-
-#~ msgid "Видеосъёмка, многокамерные трансляции, запись и монтаж."
-#~ msgstr "Video production, multi‑camera live, recording and editing."
-
-#~ msgid "Съёмка мероприятий"
-#~ msgstr "EVENT FILMING"
-
-#~ msgid "Видеокоммутация и экраны"
-#~ msgstr "VIDEO SWITCHING AND LIVE DIRECTION"
-
-#~ msgid "Стриминг"
-#~ msgstr "Streaming"
-
-#~ msgid "Графика, запись, мониторинг"
-#~ msgstr "Graphics, recording, monitoring"
+msgstr ""
 

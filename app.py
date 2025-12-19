@@ -21,30 +21,6 @@ app.config['MAILGUN_TO_EMAIL'] = os.environ.get('MAILGUN_TO_EMAIL')
 # Supported languages
 LANGUAGES = ['ru', 'en', 'et']
 
-
-# --- i18n / Flask-Babel usage ---
-# Все текстовые строки в Python и шаблонах должны быть обёрнуты в gettext / _():
-#   _('Имя'), _('Фамилия'), ...
-# Файлы переводов хранятся только в translations/<lang>/LC_MESSAGES/messages.po
-# и компилируются в messages.mo.
-#
-# Основные команды PyBabel (запускать из корня проекта):
-#
-# 1) Извлечь строки из Python и Jinja2-шаблонов:
-#    pybabel extract -F babel.cfg -o messages.pot .
-#
-# 2) Инициализировать переводы (однократно для каждого языка):
-#    pybabel init -i messages.pot -d translations -l ru
-#    pybabel init -i messages.pot -d translations -l en
-#    pybabel init -i messages.pot -d translations -l et
-#
-# 3) После изменения строк в коде/шаблонах обновлять каталоги:
-#    pybabel update -i messages.pot -d translations
-#
-# 4) Скомпилировать переводы (обязательно перед запуском для боевого режима):
-#    pybabel compile -d translations
-
-
 def select_locale():
     """Определение текущего языка по параметру ?lang=.
 
@@ -161,6 +137,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/favicon.ico')
+def favicon():
+    # Serve favicon from static/favicons at the root path for wide compatibility
+    return send_from_directory(os.path.join(app.root_path, 'static', 'favicons'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
 @app.route('/sitemap.xml')
 def sitemap():
     return send_from_directory('static', 'sitemap.xml')
@@ -172,8 +153,22 @@ def robots():
 @app.route('/google3193fab71dd9080d.html')
 
 def google_verify():
-
     return app.send_static_file('google3193fab71dd9080d.html')
+
+
+@app.route('/services/<slug>')
+def service(slug: str):
+    """Детальная страница услуги по слагу.
+
+    Допустимые значения slug: sound, light, video, stage.
+    Если слаг неизвестен — редиректим на гла��ную.
+    """
+    allowed = {'sound', 'light', 'video', 'stage'}
+    if slug not in allowed:
+        return redirect(url_for('index', lang=g.get('current_lang', app.config.get('BABEL_DEFAULT_LOCALE', 'ru'))))
+
+    return render_template('service_detail.html', slug=slug)
+
 
 if __name__ == '__main__':
     # Для разработки оставляем debug=True. На проде заменить на False / убрать.

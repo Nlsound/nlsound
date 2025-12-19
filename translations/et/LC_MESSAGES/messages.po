@@ -1,73 +1,338 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: NL PRODUCTION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-06 00:00+0000\n"
+"POT-Creation-Date: 2025-12-19 02:33+0300\n"
 "PO-Revision-Date: 2025-12-06 00:00+0000\n"
 "Last-Translator: Auto <auto@example.com>\n"
-"Language-Team: Estonian\n"
 "Language: et\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: Estonian\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
 
-#: templates/index.html
+#: app.py:137
+msgid "Пожалуйста, укажите e-mail и сообщение."
+msgstr ""
+
+#: app.py:154 templates/index.html:470
+#, fuzzy
+msgid "Спасибо! Заявка отправлена, мы свяжемся с вами."
+msgstr "Aitäh! Sinu päring on saadetud, võtame sinuga peagi ühendust."
+
+#: app.py:158
+msgid "Не удалось отправить сообщение. Попробуйте позже."
+msgstr ""
+
+#: templates/index.html:5
+msgid "NL Production — видеосъёмка, стримы и техподдержка мероприятий"
+msgstr ""
+
+#: templates/index.html:402 templates/service_detail.html:64
+msgid "Главная"
+msgstr "Avaleht"
+
+#: templates/index.html:403 templates/index.html:417
+#: templates/service_detail.html:65
+msgid "Услуги"
+msgstr "Teenused"
+
+#: templates/index.html:404 templates/service_detail.html:66
+msgid "Контакт"
+msgstr "Kontakt"
+
+#: templates/index.html:410
 msgid "NL PRODUCTION"
 msgstr "NL PRODUCTION"
 
-#: templates/index.html
+#: templates/index.html:411
 msgid "event technical solutions"
 msgstr "event technical solutions"
 
-#: templates/index.html
+#: templates/index.html:420 templates/service_detail.html:6
+#: templates/service_detail.html:71
+msgid "Звук"
+msgstr "Heli"
+
+#: templates/index.html:422
+#, fuzzy
+msgid "Аренда звукового оборудования"
+msgstr "HELISEADMETE RENT"
+
+#: templates/index.html:423
+#, fuzzy
+msgid "Озвучивание мероприятий"
+msgstr "HELINDUS ERINEVA SUURUSEGA ÜRITUSTELE:"
+
+#: templates/index.html:424
+msgid "Саунд‑инженер, настройка систем"
+msgstr "Heliinsener, süsteemide häälestus"
+
+#: templates/index.html:426 templates/index.html:435 templates/index.html:444
+#: templates/index.html:453
+msgid "Подробнее"
+msgstr "Loe lähemalt"
+
+#: templates/index.html:429 templates/service_detail.html:7
+#: templates/service_detail.html:72
+msgid "Свет"
+msgstr "Valgus"
+
+#: templates/index.html:431
+#, fuzzy
+msgid "Аренда светового оборудования"
+msgstr "VALGUSSEADMETE RENT"
+
+#: templates/index.html:432
+#, fuzzy
+msgid "Световое оформление и шоу"
+msgstr "SÜNDMUSTE VALGUSLAHENDUSED"
+
+#: templates/index.html:433
+#, fuzzy
+msgid "Программирование и управление"
+msgstr "VALGUSPROGRAMMEERIMINE JA -JUHTIMINE"
+
+#: templates/index.html:438 templates/service_detail.html:8
+#: templates/service_detail.html:73
+msgid "Видео"
+msgstr "Video"
+
+#: templates/index.html:440
+#, fuzzy
+msgid "Трансляции и стриминг"
+msgstr "OTSEÜLEKANDED JA SÜNDMUSTЕ STRIIM"
+
+#: templates/index.html:441
+msgid "Многокамерные трансляции"
+msgstr "Mitmekaameraline otseülekanne"
+
+#: templates/index.html:442
+msgid "Площадки YouTube / Facebook / RTMP"
+msgstr "YouTube / Facebook / RTMP platvormid"
+
+#: templates/index.html:447 templates/service_detail.html:9
+#: templates/service_detail.html:74
+msgid "Сцена"
+msgstr "Lava"
+
+#: templates/index.html:449
+msgid "Аренда сцен и подиумов"
+msgstr "Lavade ja poodiumite rent"
+
+#: templates/index.html:450
+msgid "Фермы, риггинг, конструкции"
+msgstr "Trellid, rigning, konstruktsioonid"
+
+#: templates/index.html:451
+msgid "Покрытие, подъёмники"
+msgstr "Katted, tõstukid"
+
+#: templates/index.html:462 templates/service_detail.html:135
 msgid "Связаться с нами"
 msgstr "Võta meiega ühendust"
 
-#: templates/index.html
+#: templates/index.html:464 templates/service_detail.html:137
 msgid "Видео, свет, звук, трансляции — опишите задачу, и мы вернёмся к вам."
-msgstr "Video, valgus, heli, ülekanded — kirjelda oma projekti ja võtame sinuga ühendust."
+msgstr ""
+"Video, valgus, heli, ülekanded — kirjelda oma projekti ja võtame sinuga "
+"ühendust."
 
-#: templates/index.html
-msgid "Спасибо! Заявка отправлена, мы с��яжемся с вами."
-msgstr "Aitäh! Sinu päring on saadetud, võtame sinuga peagi ühendust."
-
-#: templates/index.html
+#: templates/index.html:478 templates/service_detail.html:145
 msgid "Имя"
 msgstr "Eesnimi"
 
-#: templates/index.html
-msgid "Фамилия"
-msgstr "Perekonnanimi"
-
-#: templates/index.html
-msgid "Номер телефона"
-msgstr "Telefoninumber"
-
-#: templates/index.html
-msgid "E-mail"
-msgstr "E-post"
-
-#: templates/index.html
-msgid "Сообщение"
-msgstr "Sõnum"
-
-#: templates/index.html
-msgid "Отправить"
-msgstr "Saada"
-
-#: templates/index.html
+#: templates/index.html:479 templates/service_detail.html:146
 msgid "Введите имя"
 msgstr "Sisesta eesnimi"
 
-#: templates/index.html
-msgid "Введите фамилию"
-msgstr "Sisesta perekonnanimi"
+#: templates/index.html:482 templates/service_detail.html:149
+msgid "Номер телефона"
+msgstr "Telefoninumber"
 
-#: templates/index.html
+#: templates/index.html:483 templates/service_detail.html:150
 msgid "Ваш телефон"
 msgstr "Sinu telefoninumber"
 
-#: templates/index.html
+#: templates/index.html:489 templates/service_detail.html:156
+msgid "E-mail"
+msgstr "E-post"
+
+#: templates/index.html:496 templates/service_detail.html:163
+msgid "Сообщение"
+msgstr "Sõnum"
+
+#: templates/index.html:497 templates/service_detail.html:164
 msgid "Коротко опишите задачу"
 msgstr "Kirjelda lühidalt oma projekti"
+
+#: templates/index.html:503 templates/service_detail.html:170
+msgid "Отправить"
+msgstr "Saada"
+
+#: templates/service_detail.html:5
+#, fuzzy
+msgid "Услуга"
+msgstr "Teenus"
+
+#: templates/service_detail.html:76
+msgid "услуги и решения для мероприятий"
+msgstr "teenused ja lahendused sündmustele"
+
+#: templates/service_detail.html:80
+msgid "На главную"
+msgstr "Tagasi avalehele"
+
+#: templates/service_detail.html:83
+#, fuzzy
+msgid "Что входит"
+msgstr "Mida sisaldab"
+
+#: templates/service_detail.html:86
+msgid "АРЕНДА ЗВУКОВОГО ОБОРУДОВАНИЯ"
+msgstr "HELISEADMETE RENT"
+
+#: templates/service_detail.html:87
+msgid "ОЗВУЧИВАНИЕ МЕРОПРИЯТИЙ ЛЮБОГО МАСШТАБА:"
+msgstr "HELINDUS ERINEVA SUURUSEGA ÜRITUSTELE:"
+
+#: templates/service_detail.html:87
+msgid ""
+"КОНЦЕРТЫ, ФЕСТИВАЛИ, КОРПОРАТИВЫ, КОНФЕРЕНЦИИ, СЕМИНАРЫ, ЧАСТНЫЕ "
+"МЕРОПРИЯТИЯ"
+msgstr ""
+
+#: templates/service_detail.html:88
+msgid "НАСТРОЙКА И КАЛИБРОВКА ЗВУКОВЫХ СИСТЕМ"
+msgstr "HELISÜSTEEMIDE HÄÄLESTUS JA KALIBREERIMINE"
+
+#: templates/service_detail.html:89
+msgid "РАБОТА ЗВУКОРЕЖИССЁРА / FOH / MONITOR ENGINEER"
+msgstr "HELIREEŽISSÖÖR / FOH / MONITORI INSENER"
+
+#: templates/service_detail.html:90
+msgid "ЗАПИСЬ ЖИВОГО ЗВУКА И МЕРОПРИЯТИЙ"
+msgstr "ELIHELIDE JA SÜNDMUSTE SALVESTUS"
+
+#: templates/service_detail.html:92
+msgid "АРЕНДА СВЕТОВОГО ОБОРУДОВАНИЯ"
+msgstr "VALGUSSEADMETE RENT"
+
+#: templates/service_detail.html:93
+msgid "СВЕТОВОЕ ОФОРМЛЕНИЕ МЕРОПРИЯТИЙ"
+msgstr "SÜNDMUSTE VALGUSLAHENDUSED"
+
+#: templates/service_detail.html:94
+msgid "ПРОГРАММИРОВАНИЕ И УПРАВЛЕНИЕ СВЕТОМ"
+msgstr "VALGUSPROGRAMMEERIMINE JA -JUHTIMINE"
+
+#: templates/service_detail.html:95
+msgid "РАБОТА СВЕТОРЕЖИССЁРА"
+msgstr "VALGUSOPERAATOR / -DISAINER"
+
+#: templates/service_detail.html:97 templates/service_detail.html:107
+msgid "АРЕНДА ВИДЕООБОРУДОВАНИЯ:"
+msgstr "VIDEOSEADMETE RENT:"
+
+#: templates/service_detail.html:97 templates/service_detail.html:107
+msgid "LED-ЭКРАНЫ, ТЕЛЕВИЗОРЫ, ПРОЕКТОРЫ"
+msgstr "LED-EKRANID, TELLERID, PROJEKTORID"
+
+#: templates/service_detail.html:98 templates/service_detail.html:108
+msgid "ВИДЕОТРАНСЛЯЦИИ И СТРИМИНГ МЕРОПРИЯТИЙ"
+msgstr "OTSEÜLEKANDED JA SÜNDMUSTЕ STRIIM"
+
+#: templates/service_detail.html:99 templates/service_detail.html:109
+msgid "СЪЁМКА МЕРОПРИЯТИЙ"
+msgstr "SÜNDMUSTЕ FILMIMINE"
+
+#: templates/service_detail.html:100 templates/service_detail.html:110
+msgid "ВИДЕО-КОММУТАЦИЯ И РЕЖИССУРА ТРАНСЛЯЦИЙ"
+msgstr "VIDEO-LÜLITUS JA OTSEÜLEKANDE REŽII"
+
+#: templates/service_detail.html:101 templates/service_detail.html:111
+msgid "ПРЕЗЕНТАЦИОННЫЕ РЕШЕНИЯ"
+msgstr "PRESENTATSIOONI LAHENDUSED"
+
+#: templates/service_detail.html:101 templates/service_detail.html:111
+msgid "PROPRESENTER, ВИДЕО-КОНТЕНТ"
+msgstr "PROPRESENTER, VIDEOSISU"
+
+#: templates/service_detail.html:103
+msgid "АРЕНДА СЦЕН И ПОДИУМОВ"
+msgstr "LAVADE JA POODIUMITE RENT"
+
+#: templates/service_detail.html:104
+msgid "ФЕРМЫ, РИГГИНГ, КОНСТРУКЦИИ"
+msgstr "TRELLID, RIGNING, KONSTRUKTSIOONID"
+
+#: templates/service_detail.html:105
+msgid "ПОКРЫТИЕ, ПОДЪЁМНИКИ"
+msgstr "KATTED, TÕSTUKID"
+
+#: templates/service_detail.html:112
+msgid "МНОГОКАМЕРНЫЕ ТРАНСЛЯЦИИ"
+msgstr "MITMEKAAMERALINE OTSEÜLEKANNE"
+
+#: templates/service_detail.html:113
+msgid "ПЛОЩАДКИ YOUTUBE / FACEBOOK / RTMP"
+msgstr "YOUTUBE / FACEBOOK / RTMP PLATVORMID"
+
+#: templates/service_detail.html:114
+msgid "ГРАФИКА, ЗАПИСЬ, МОНИТОРИНГ"
+msgstr "GRAAFIKA, SALVESTUS, MONITOORING"
+
+#: templates/service_detail.html:117
+msgid "Оставить заявку"
+msgstr "Saada päring"
+
+#: templates/service_detail.html:120
+msgid "Как мы работаем"
+msgstr "Kuidas me töötame"
+
+#: templates/service_detail.html:122
+msgid "Аудит задачи и консультация"
+msgstr "Vajaduste audit ja konsultatsioon"
+
+#: templates/service_detail.html:123
+msgid "Подбор оборудования и решение под бюджет"
+msgstr "Seadmete valik ja eelarvega sobiv lahendus"
+
+#: templates/service_detail.html:124
+msgid "Монтаж, запуск и сопровождение на площадке"
+msgstr "Paigaldus, käivitus ja tugi kohapeal"
+
+#: templates/service_detail.html:125
+msgid "Демонтаж и передача материалов (при необходимости)"
+msgstr "Demontaaž ja materjalide üleandmine (vajadusel)"
+
+#~ msgid "Фамилия"
+#~ msgstr "Perekonnanimi"
+
+#~ msgid "Введите фамилию"
+#~ msgstr "Sisesta perekonnanimi"
+
+#~ msgid "Озвучивание мероприятий, аренда звука, микширование, DJ/PA."
+#~ msgstr "Ürituste helindus, heli rent, miksimine, DJ/PA."
+
+#~ msgid "Световое оформление, аренда света, программирование шоу."
+#~ msgstr "Valguslahendus, valgusrent, show programmeerimine."
+
+#~ msgid "Видеосъёмка, многокамерные трансляции, запись и монтаж."
+#~ msgstr "Videosalvestus, mitmekaameraline otseülekanne, salvestus ja montaaž."
+
+#~ msgid "Съёмка мероприятий"
+#~ msgstr "SÜNDMUSTЕ FILMIMINE"
+
+#~ msgid "Видеокоммутация и экраны"
+#~ msgstr "VIDEO-LÜLITUS JA OTSEÜLEKANDE REŽII"
+
+#~ msgid "Стриминг"
+#~ msgstr "Striiming"
+
+#~ msgid "Графика, запись, мониторинг"
+#~ msgstr "Graafika, salvestus, monitooring"
+

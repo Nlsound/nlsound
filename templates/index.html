@@ -49,6 +49,7 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
       line-height: 1.5;
     }
+    html { scroll-behavior: smooth; }
 
     a { color: var(--text-light); text-decoration: none; }
 
@@ -66,6 +67,14 @@
       z-index: 100;
       background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0));
       backdrop-filter: blur(2px);
+    }
+    .site-nav { display: none; gap: 16px; align-items: center; }
+    .nav-link { font-size: 14px; color: #fff; opacity: .92; }
+    .nav-link:hover { text-decoration: none; }
+    @media (min-width: 720px) { .site-nav { display: flex; } }
+    @media (max-width: 719px) {
+      .site-nav { display: none !important; }
+      .lang-switcher { display: none; }
     }
     .logo-text {
       display: inline-flex;
@@ -96,6 +105,44 @@
     }
     .lang-link:hover { color: #fff; opacity: 1; border-color: rgba(255,255,255,0.2); }
     .active-lang { color: #000; background: var(--nl-yellow); border-color: var(--nl-yellow); opacity: 1; }
+
+    /* Anchor offset for fixed header */
+    .hero, .services-section, .contact-section { scroll-margin-top: 78px; }
+
+    /* Mobile burger and drawer */
+    .burger-btn {
+      display: none;
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      width: 40px; height: 40px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.5);
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 120;
+    }
+    .burger-btn .lines { position: relative; width: 18px; height: 2px; background: #fff; }
+    .burger-btn .lines::before,
+    .burger-btn .lines::after { content: ""; position: absolute; left: 0; width: 18px; height: 2px; background: #fff; transition: transform .2s ease, top .2s ease, opacity .2s ease; }
+    .burger-btn .lines::before { top: -6px; }
+    .burger-btn .lines::after { top: 6px; }
+    .burger-btn.active .lines { background: transparent; }
+    .burger-btn.active .lines::before { top: 0; transform: rotate(45deg); }
+    .burger-btn.active .lines::after { top: 0; transform: rotate(-45deg); }
+
+    .mobile-drawer { position: fixed; top: 0; right: 0; height: 100vh; width: 270px; background: rgba(0,0,0,0.96); border-left: 1px solid rgba(255,255,255,0.1); transform: translateX(100%); transition: transform .25s ease; z-index: 110; padding: 72px 18px 18px; display: flex; flex-direction: column; gap: 10px; }
+    .mobile-drawer.open { transform: translateX(0); }
+    .mobile-drawer a { color: #fff; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; padding: 12px 10px; border-radius: 10px; }
+    .mobile-drawer a:hover { background: rgba(255,255,255,0.08); }
+    .drawer-lang { margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; gap: 10px; }
+
+    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); opacity: 0; pointer-events: none; transition: opacity .2s ease; z-index: 105; }
+    .drawer-overlay.show { opacity: 1; pointer-events: auto; }
+
+    @media (max-width: 719px) {
+      .burger-btn { display: grid; place-items: center; }
+    }
 
     /* HERO */
     .hero {
@@ -143,8 +190,30 @@
       text-transform: lowercase;
     }
 
+    /* Services section */
+    .services-section { background: #000; padding: 90px 18px 12px; }
+    .services-container { max-width: var(--container-w); margin: 0 auto; }
+    .services-title { margin: 0 0 18px; text-align: center; font-size: clamp(22px, 4vw, 32px); letter-spacing: 0.02em; }
+    .services-grid { display: grid; grid-template-columns: 1fr; gap: 14px; grid-auto-rows: 1fr; }
+    @media (min-width: 720px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+    .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 16px; box-shadow: 0 10px 28px rgba(0,0,0,0.28); display: flex; flex-direction: column; height: 100%; }
+    .service-name { margin: 0 0 6px; color: var(--nl-yellow); font-size: 18px; letter-spacing: 0.04em; }
+    .service-text { margin: 0; color: var(--text-dim); font-size: 14px; }
+    .service-list { margin: 8px 0 0; padding-left: 18px; color: var(--text-dim); flex: 1 1 auto; }
+    .service-list li { margin: 6px 0; }
+    .service-subtitle { margin: 10px 0 6px; font-weight: 700; color: #fff; font-size: 14px; letter-spacing: .04em; }
+    .service-more { display: inline-block; margin-top: 8px; color: var(--nl-yellow); font-weight: 800; letter-spacing: .04em; }
+    .service-card .service-more { margin-top: auto; }
+    .service-more:hover { filter: brightness(1.08); text-decoration: underline; }
+
+    /* Services extra (full-width band under grid) */
+    .services-extra { margin: 40px 0 0;}
+    .services-extra-inner { max-width: var(--container-w); margin: 0 auto; padding: 18px; }
+    .services-extra h3 { margin: 0 0 18px; font-size: clamp(18px, 3.4vw, 32px); letter-spacing: .04em; text-align: center; }
+    .services-extra p { margin: 0; color: var(--text-dim); font-size: clamp(15px, 2.6vw, 16px); text-align: center; }
+
     /* Contact section */
-    .contact-section { background: #000; padding: 56px 18px 72px; }
+    .contact-section { background: #000; padding: 76px 18px 72px; }
     .contact-container { max-width: var(--container-w); margin: 0 auto; }
 
     .contact-header { text-align: center; }
@@ -206,6 +275,7 @@
 
     .btn-submit {
       justify-self: start;
+      margin-top: 10px;
       appearance: none;
       border: 1px solid rgba(0,0,0,0.08);
       background: var(--nl-yellow);
@@ -224,6 +294,11 @@
 
     /* reduce extra space */
     .hero { margin-bottom: 12px; }
+
+    /* Force-hide header lang-switcher on mobile; show only inside drawer */
+    @media (max-width: 719px) {
+      header.top-bar .lang-switcher { display: none !important; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -360,8 +435,17 @@
   <div class="page-wrapper">
     <header class="top-bar">
       <div class="logo-text" aria-label="Logo">
-        <img class="logo-img" src="{{ url_for('static', filename='images/logo.webp') }}" alt="NL Production logo">
+        <a href="{{ url_for('index', lang=current_lang) }}#top" aria-label="{{ _('На главную') }}">
+          <img class="logo-img" src="{{ url_for('static', filename='images/logo.webp') }}" alt="NL Production logo">
+        </a>
       </div>
+
+          <nav class="site-nav">
+      <a href="#top" class="nav-link active" aria-current="page">{{ _('Главная') }}</a>
+      <a href="#services" class="nav-link">{{ _('Услуги') }}</a>
+      <a href="#contact" class="nav-link">{{ _('Контакт') }}</a>
+    </nav>
+
       <nav class="lang-switcher">
         {% for lang in LANGUAGES %}
           <a
@@ -373,15 +457,92 @@
           </a>
         {% endfor %}
       </nav>
+      <button class="burger-btn" id="burgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+        <span class="lines"></span>
+      </button>
     </header>
 
-    <section class="hero">
+
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true" aria-label="Mobile menu">
+      <a href="#top" class="nav-link">{{ _('Главная') }}</a>
+      <a href="#services" class="nav-link">{{ _('Услуги') }}</a>
+      <a href="#contact" class="nav-link">{{ _('Контакт') }}</a>
+      <div class="drawer-lang">
+        {% for lang in LANGUAGES %}
+          <a
+            href="{{ url_for('index', lang=lang) }}"
+            class="lang-link {% if lang == current_lang %}active-lang{% endif %}"
+            aria-current="{% if lang == current_lang %}true{% else %}false{% endif %}"
+          >
+            {{ lang.upper() }}
+          </a>
+        {% endfor %}
+      </div>
+    </aside>
+
+    <section class="hero" id="top">
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <h1 class="hero-title">{{ _('NL PRODUCTION') }}</h1>
         <p class="hero-subtitle">{{ _('event technical solutions') }}</p>
       </div>
     </section>
+
+   <section class="services-section" id="services">
+  <div class="services-container">
+    <h2 class="services-title">{{ _('Услуги') }}</h2>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <h3 class="service-name">{{ _('Звук') }}</h3>
+        <ul class="service-list">
+          <li>{{ _('Аренда звукового оборудования') }}</li>
+          <li>{{ _('Озвучивание мероприятий') }}</li>
+          <li>{{ _('Саунд-инженер, настройка систем') }}</li>
+        </ul>
+        <a class="service-more" href="#contact">
+          {{ _('Подробнее') }} →
+        </a>
+      </div>
+
+      <div class="service-card">
+        <h3 class="service-name">{{ _('Свет') }}</h3>
+        <ul class="service-list">
+          <li>{{ _('Аренда светового оборудования') }}</li>
+          <li>{{ _('Световое оформление и шоу') }}</li>
+          <li>{{ _('Программирование и управление') }}</li>
+        </ul>
+        <a class="service-more" href="#contact">
+          {{ _('Подробнее') }} →
+        </a>
+      </div>
+
+      <div class="service-card">
+        <h3 class="service-name">{{ _('Видео') }}</h3>
+        <ul class="service-list">
+          <li>{{ _('Трансляции и стриминг') }}</li>
+          <li>{{ _('Многокамерные трансляции') }}</li>
+          <li>{{ _('Площадки YouTube / Facebook / RTMP') }}</li>
+        </ul>
+        <a class="service-more" href="#contact">
+          {{ _('Подробнее') }} →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <div class="services-extra" aria-labelledby="extra-title">
+      <div class="services-extra-inner">
+        <h3 id="extra-title">{{ _('Дополнительно') }}</h3>
+        <p>{{ _('Комплексный технический продакшн мероприятий: проектирование решений, подбор оборудования под формат и бюджет, монтаж и демонтаж, работа с артистами и организаторами, поддержка репетиций и нестандартных задач. Если проект выходит за стандартные рамки — мы всегда готовы обсудить детали и найти оптимальное решение.') }}</p>
+        <p style="margin-top:30px;">
+          <a class="btn-submit" href="#contact">{{ _('Связаться с нами') }}</a>
+        </p>
+      </div>
+    </div>
 
     <section class="contact-section" id="contact">
       <div class="contact-container">
@@ -434,6 +595,142 @@
         </div>
       </div>
     </section>
+  <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-main">
+          <div class="footer-brand">{{ _('NL Production') }}</div>
+          <div class="footer-desc">{{ _('Event technical solutions / Технический продакшн мероприятий') }}</div>
+          <div class="footer-contact">
+            <a class="footer-link" href="mailto:libbanikita@gmail.com">libbanikita@gmail.com</a>
+            <span class="footer-sep">•</span>
+            <a class="footer-link" href="tel:+37258109235">+372 5810 9235</a>
+            <span class="footer-sep">•</span>
+            <span>{{ _('Ida-Virumaa, Estonia') }}</span>
+          </div>
+          <div class="footer-copy">© {{ _('NL Production') }}, <span id="year"></span>. {{ _('Все права защищены.') }}</div>
+        </div>
+      </div>
+    </footer>
   </div>
+<script>
+    (function(){
+      const btn = document.getElementById('burgerBtn');
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      if (!btn || !drawer || !overlay) return;
+
+      function openDrawer(){
+        drawer.classList.add('open');
+        overlay.classList.add('show');
+        btn.classList.add('active');
+        btn.setAttribute('aria-expanded','true');
+        document.documentElement.style.overflow = 'hidden';
+      }
+      function closeDrawer(){
+        drawer.classList.remove('open');
+        overlay.classList.remove('show');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded','false');
+        document.documentElement.style.overflow = '';
+      }
+
+      btn.addEventListener('click', () => {
+        if (drawer.classList.contains('open')) closeDrawer();
+        else openDrawer();
+      });
+      overlay.addEventListener('click', closeDrawer);
+      drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+    })();
+  </script>
+<script>
+  // Navigation active state handling for single-page sections (top, services, contact)
+  (function () {
+    const HEADER_OFFSET = 100; // approximate header height
+
+    const navLinks = Array.from(document.querySelectorAll('.site-nav .nav-link, .mobile-drawer .nav-link'));
+    if (!navLinks.length) return;
+
+    // Map section id -> links pointing to it
+    const idToLinks = {};
+    function extractIdFromHref(href) {
+      if (!href) return null;
+      const idx = href.indexOf('#');
+      if (idx === -1) return null;
+      const id = href.slice(idx + 1).trim();
+      return id || null;
+    }
+
+    navLinks.forEach((a) => {
+      const id = extractIdFromHref(a.getAttribute('href'));
+      if (!id) return;
+      (idToLinks[id] ||= []).push(a);
+    });
+
+    // Sections present on the page (only those existing in DOM)
+    const sectionOrder = ['top', 'services', 'contact'];
+    const sections = sectionOrder
+      .map((id) => ({ id, el: document.getElementById(id) }))
+      .filter((s) => s.el);
+
+    function clearActive() {
+      navLinks.forEach((a) => {
+        a.classList.remove('active');
+        a.removeAttribute('aria-current');
+      });
+    }
+
+    function setActive(id) {
+      clearActive();
+      const links = idToLinks[id];
+      if (links) links.forEach((a) => { a.classList.add('active'); a.setAttribute('aria-current', 'page'); });
+    }
+
+    function setActiveFromHash() {
+      const id = (location.hash || '').replace('#', '');
+      if (id && idToLinks[id]) {
+        setActive(id);
+        return true;
+      }
+      return false;
+    }
+
+    let ticking = false;
+    function updateOnScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        // Determine the last section that has passed the header offset
+        let current = sections.length ? sections[0].id : null;
+        for (const s of sections) {
+          const r = s.el.getBoundingClientRect();
+          if (r.top - HEADER_OFFSET <= 0) current = s.id;
+        }
+        if (current) setActive(current);
+        ticking = false;
+      });
+    }
+
+    // Initial state
+    clearActive();
+    if (!setActiveFromHash()) updateOnScroll();
+
+    // Update on hash changes
+    window.addEventListener('hashchange', () => {
+      // Give the browser a moment to jump to the anchor, then compute
+      setTimeout(() => { setActiveFromHash() || updateOnScroll(); }, 0);
+    }, { passive: true });
+
+    // Update while scrolling/resizing
+    window.addEventListener('scroll', updateOnScroll, { passive: true });
+    window.addEventListener('resize', updateOnScroll, { passive: true });
+
+    // Also nudge after nav link clicks (same-page anchors)
+    navLinks.forEach((a) => {
+      a.addEventListener('click', () => {
+        setTimeout(() => { setActiveFromHash() || updateOnScroll(); }, 50);
+      });
+    });
+  })();
+</script>
 </body>
 </html>
