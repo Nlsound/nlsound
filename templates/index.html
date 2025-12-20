@@ -3,30 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>{{ _('NL Production — видеосъёмка, стримы и техподдержка мероприятий') }}</title>
-  <meta name="description" content="NL Production — видеосъёмка, монтаж, прямые трансляции и техническое обеспечение мероприятий в Ида-Вирумаа и по всей Эстонии.">
-  <meta name="keywords" content="NL Production, видеосъёмка, стрим, трансляция, монтаж, звук, свет, аренда звука, аренда света, техническое обеспечение мероприятий, Ида-Вирумаа, Kohtla-Järve, Kohtla-Järve video, event technical solutions">
+  <meta name="description" content="{{ _('NL Production — видеосъёмка, монтаж, прямые трансляции и техническое обеспечение мероприятий в Ида-Вирумаа и по всей Эстонии.') }}">
+  <meta name="keywords" content="{{ _('NL Production, видеосъёмка, стрим, трансляция, монтаж, звук, свет, аренда звука, аренда света, техническое обеспечение мероприятий, Ида-Вирумаа, Kohtla-Järve, Kohtla-Järve video, event technical solutions') }}">
   <meta name="author" content="NL Production">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="FO2uzMsGZea2TZYACXk8shGQyIJb6K1xOtn4COYqcZo" />
   <!-- Open Graph -->
-  <meta property="og:title" content="NL Production — видеосъёмка и стримы мероприятий">
-  <meta property="og:description" content="Профессиональная видеосъёмка, многокамерные трансляции и полный технический продакшн для мероприятий.">
+  <meta property="og:title" content="{{ _('NL Production — видеосъёмка и стримы мероприятий') }}">
+  <meta property="og:description" content="{{ _('Профессиональная видеосъёмка, многокамерные трансляции и полный технический продакшн для мероприятий.') }}">
   <meta property="og:image" content="https://nlproduction.ee/static/images/og-nlproduction.png">
   <meta property="og:url" content="https://nlproduction.ee/">
   <meta property="og:type" content="website">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="NL Production — видеосъёмка и стримы мероприятий">
-  <meta name="twitter:description" content="Профессиональная видеосъёмка, многокамерные трансляции и техподдержка.">
+  <meta name="twitter:title" content="{{ _('NL Production — видеосъёмка и стримы мероприятий') }}">
+  <meta name="twitter:description" content="{{ _('Профессиональная видеосъёмка, многокамерные трансляции и техподдержка.') }}">
   <meta name="twitter:image" content="https://nlproduction.ee/static/images/og-nlproduction.png">
 
-  <!-- Favicons -->
-  <link rel="icon" href="{{ url_for('static', filename='favicons/favicon.ico') }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicons/favicon-32x32.png') }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicons/favicon-16x16.png') }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicons/apple-touch-icon.png') }}">
-  <link rel="manifest" href="{{ url_for('static', filename='favicons/site.webmanifest') }}">
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicons/favicon.ico') }}">
+<link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='favicons/favicon-96x96.png') }}">
+<link rel="icon" type="image/png" sizes="48x48" href="{{ url_for('static', filename='favicons/favicon-48x48.png') }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicons/favicon-32x32.png') }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicons/favicon-16x16.png') }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicons/apple-touch-icon.png') }}">
+<link rel="manifest" href="{{ url_for('static', filename='favicons/site.webmanifest') }}">
+<link rel="shortcut icon" href="/favicon.ico">
 
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <style>
@@ -434,9 +437,9 @@
 <body>
   <div class="page-wrapper">
     <header class="top-bar">
-      <div class="logo-text" aria-label="Logo">
+      <div class="logo-text" aria-label="{{ _('Логотип') }}">
         <a href="{{ url_for('index', lang=current_lang) }}#top" aria-label="{{ _('На главную') }}">
-          <img class="logo-img" src="{{ url_for('static', filename='images/logo.webp') }}" alt="NL Production logo">
+          <img class="logo-img" src="{{ url_for('static', filename='images/logo.webp') }}" alt="{{ _('NL Production logo') }}">
         </a>
       </div>
 
@@ -457,7 +460,7 @@
           </a>
         {% endfor %}
       </nav>
-      <button class="burger-btn" id="burgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+      <button class="burger-btn" id="burgerBtn" aria-label="{{ _('Открыть меню') }}" aria-controls="mobileDrawer" aria-expanded="false">
         <span class="lines"></span>
       </button>
     </header>
@@ -465,7 +468,7 @@
 
 
     <div class="drawer-overlay" id="drawerOverlay"></div>
-    <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true" aria-label="Mobile menu">
+    <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true" aria-label="{{ _('Мобильное меню') }}">
       <a href="#top" class="nav-link">{{ _('Главная') }}</a>
       <a href="#services" class="nav-link">{{ _('Услуги') }}</a>
       <a href="#contact" class="nav-link">{{ _('Контакт') }}</a>
@@ -500,9 +503,9 @@
         <ul class="service-list">
           <li>{{ _('Аренда звукового оборудования') }}</li>
           <li>{{ _('Озвучивание мероприятий') }}</li>
-          <li>{{ _('Саунд-инженер, настройка систем') }}</li>
+          <li>{{ _('Саунд‑инженер, настройка систем') }}</li>
         </ul>
-        <a class="service-more" href="#contact">
+        <a class="service-more" href="{{ url_for('service', slug='sound', lang=current_lang) }}">
           {{ _('Подробнее') }} →
         </a>
       </div>
@@ -514,7 +517,7 @@
           <li>{{ _('Световое оформление и шоу') }}</li>
           <li>{{ _('Программирование и управление') }}</li>
         </ul>
-        <a class="service-more" href="#contact">
+        <a class="service-more" href="{{ url_for('service', slug='light', lang=current_lang) }}">
           {{ _('Подробнее') }} →
         </a>
       </div>
@@ -526,7 +529,7 @@
           <li>{{ _('Многокамерные трансляции') }}</li>
           <li>{{ _('Площадки YouTube / Facebook / RTMP') }}</li>
         </ul>
-        <a class="service-more" href="#contact">
+        <a class="service-more" href="{{ url_for('service', slug='video', lang=current_lang) }}">
           {{ _('Подробнее') }} →
         </a>
       </div>
@@ -575,7 +578,7 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="email">{{ _('E-mail') }}</label>
-                <input type="email" id="email" name="email" required placeholder="name@example.com">
+                <input type="email" id="email" name="email" required placeholder="{{ _('name@example.com') }}">
               </div>
             </div>
 

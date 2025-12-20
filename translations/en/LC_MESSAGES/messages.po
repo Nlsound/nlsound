@@ -57,14 +57,12 @@ msgid "Звук"
 msgstr "Sound"
 
 #: templates/index.html:422
-#, fuzzy
 msgid "Аренда звукового оборудования"
-msgstr "SOUND EQUIPMENT RENTAL"
+msgstr "Sound equipment rental"
 
 #: templates/index.html:423
-#, fuzzy
 msgid "Озвучивание мероприятий"
-msgstr "SOUND FOR EVENTS OF ANY SCALE:"
+msgstr "Event sound"
 
 #: templates/index.html:424
 msgid "Саунд‑инженер, настройка систем"
@@ -81,19 +79,16 @@ msgid "Свет"
 msgstr "Light"
 
 #: templates/index.html:431
-#, fuzzy
 msgid "Аренда светового оборудования"
-msgstr "LIGHTING EQUIPMENT RENTAL"
+msgstr "Lighting equipment rental"
 
 #: templates/index.html:432
-#, fuzzy
 msgid "Световое оформление и шоу"
-msgstr "EVENT LIGHTING DESIGN"
+msgstr "Lighting design and shows"
 
 #: templates/index.html:433
-#, fuzzy
 msgid "Программирование и управление"
-msgstr "LIGHT PROGRAMMING AND OPERATION"
+msgstr "Lighting programming and control"
 
 #: templates/index.html:438 templates/service_detail.html:8
 #: templates/service_detail.html:73
@@ -101,9 +96,8 @@ msgid "Видео"
 msgstr "Video"
 
 #: templates/index.html:440
-#, fuzzy
 msgid "Трансляции и стриминг"
-msgstr "LIVE VIDEO BROADCASTS AND STREAMING"
+msgstr "Live streaming and broadcasts"
 
 #: templates/index.html:441
 msgid "Многокамерные трансляции"

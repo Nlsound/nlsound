@@ -76,7 +76,7 @@
     <header class="top-bar">
       <div class="logo-text" aria-label="Logo">
         <a href="{{ url_for('index', lang=current_lang) }}" aria-label="{{ _('На главную') }}">
-          <img class="logo-img" src="{{ url_for('static', filename='images/logo.webp') }}" alt="NL Production logo">
+          <img class="logo-img" src="{{ url_for('static', filename='images/logo.webp') }}" alt="{{ _('NL Production logo') }}">
         </a>
       </div>
       <nav class="lang-switcher">
@@ -84,7 +84,7 @@
           <a href="{{ url_for('service', slug=slug, lang=lang) }}" class="lang-link {% if lang == current_lang %}active-lang{% endif %}">{{ lang.upper() }}</a>
         {% endfor %}
       </nav>
-      <button class="burger-btn" id="burgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+      <button class="burger-btn" id="burgerBtn" aria-label="{{ _('Открыть меню') }}" aria-controls="mobileDrawer" aria-expanded="false">
         <span class="lines"></span>
       </button>
     </header>
@@ -161,9 +161,9 @@
           <h2>{{ _('Как мы работаем') }}</h2>
           <ul class="list">
             <li>{{ _('Аудит задачи и консультация') }}</li>
-            <li>{{ _('По��бор оборудования и решение под бюджет') }}</li>
+            <li>{{ _('Подбор оборудования и решение под бюджет') }}</li>
             <li>{{ _('Монтаж, запуск и сопровождение на площадке') }}</li>
-            <li>{{ _('Демон��аж и передача материалов (при необходимости)') }}</li>
+            <li>{{ _('Демонтаж и передача материалов (при необходимости)') }}</li>
           </ul>
         </div>
       </div>
@@ -195,7 +195,7 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="email">{{ _('E-mail') }}</label>
-                <input type="email" id="email" name="email" required placeholder="name@example.com">
+                <input type="email" id="email" name="email" required placeholder="{{ _('name@example.com') }}">
               </div>
             </div>
 
@@ -247,16 +247,16 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-main">
-        <div class="footer-brand">NL Production</div>
-        <div class="footer-desc">Event technical solutions / Технический продакшн мероприятий</div>
+        <div class="footer-brand">{{ _('NL Production') }}</div>
+        <div class="footer-desc">{{ _('Event technical solutions / Технический продакшн мероприятий') }}</div>
         <div class="footer-contact">
           <a class="footer-link" href="mailto:info@nlproduction.ee">info@nlproduction.ee</a>
           <span class="footer-sep">•</span>
           <a class="footer-link" href="tel:+37200000000">+372 0000 0000</a>
           <span class="footer-sep">•</span>
-          <span>Ida-Virumaa, Estonia</span>
+          <span>{{ _('Ida-Virumaa, Estonia') }}</span>
         </div>
-        <div class="footer-copy">© NL Production, <script>document.write(new Date().getFullYear())</script>. {{ _('Все права защищены.') }}</div>
+        <div class="footer-copy">© {{ _('NL Production') }}, <script>document.write(new Date().getFullYear())</script>. {{ _('Все права защищены.') }}</div>
       </div>
     </div>
   </footer>
