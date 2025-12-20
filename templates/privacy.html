@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Privacy Policy') }} · {{ _('NL Production') }}{% endblock %}
+{% block meta_description %}Privacy Policy — NL Production{% endblock %}
+
+{% block content %}
+  <main class="content">
+    <div class="container">
+      <h1 class="pp-title">Privaatsuspoliitika</h1>
+      <p class="pp-updated">Viimati uuendatud: 2025</p>
+
+      <article class="card">
+        <h2>1. Andmete vastutav töötleja</h2>
+        <p><strong>NL Sound OÜ</strong><br>Kontakt e-posti teel: <strong>libbanikita@gmail.com</strong></p>
+        <p>Kui teil on küsimusi seoses isikuandmete töötlemisega, võtke meiega ühendust ülaltoodud e-posti aadressil.</p>
+
+        <h2>2. Milliseid andmeid me kogume</h2>
+        <p>Me kogume ainult minimaalselt vajalikke andmeid, sealhulgas:</p>
+        <ul>
+          <li>andmed, mida kasutaja edastab <strong>kontaktvormi</strong> kaudu (nt nimi, e-posti aadress, sõnumi sisu);</li>
+          <li>tehnilised andmed veebilehe kasutamise kohta (nt IP-aadress, brauseri tüüp, külastuse kestus);</li>
+          <li>kasutaja valitud <strong>keeleseaded</strong>, mis salvestatakse küpsiste abil.</li>
+        </ul>
+        <p>Me ei kogu tundlikke isikuandmeid ega loo kasutajakontosid.</p>
+
+        <h2>3. Isikuandmete kasutamise eesmärk</h2>
+        <p>Kogutud andmeid kasutatakse järgmistel eesmärkidel:</p>
+        <ul>
+          <li>kasutajaga suhtlemiseks ja päringutele vastamiseks;</li>
+          <li>veebilehe korrektse toimimise tagamiseks;</li>
+          <li>veebilehe kasutajakogemuse ja sisu parandamiseks;</li>
+          <li>veebilehe külastatavuse analüüsimiseks.</li>
+        </ul>
+
+        <h2>4. Küpsised (Cookies)</h2>
+        <p>Meie veebileht kasutab küpsiseid:</p>
+        <ul>
+          <li>veebilehe põhifunktsioonide tagamiseks;</li>
+          <li>keele-eelistuse salvestamiseks;</li>
+          <li>veebilehe liikluse analüüsimiseks <strong>Google Analytics</strong> teenuse abil.</li>
+        </ul>
+        <p>Kasutajal on võimalik küpsiste kasutamisega nõustuda või sellest keelduda vastava teavituse kaudu veebilehe esmakordsel külastamisel.</p>
+
+        <h2>5. Google Analytics</h2>
+        <p>Veebileht kasutab <strong>Google Analytics</strong> teenust, mida pakub Google LLC, et koguda anonüümset statistikat veebilehe kasutamise kohta.</p>
+        <p>Google Analytics võib kasutada küpsiseid ja töödelda andmeid vastavalt oma privaatsustingimustele. Lisainfo: Google’i privaatsuspoliitika.</p>
+
+        <h2>6. Isikuandmete säilitamine</h2>
+        <p>Isikuandmeid säilitatakse ainult nii kaua, kui see on vajalik:</p>
+        <ul>
+          <li>kasutajapäringutele vastamiseks;</li>
+          <li>seadusest tulenevate kohustuste täitmiseks;</li>
+          <li>veebilehe analüüsi eesmärkidel.</li>
+        </ul>
+
+        <h2>7. Andmete edastamine kolmandatele osapooltele</h2>
+        <p>Me ei müü ega edasta isikuandmeid kolmandatele isikutele, välja arvatud:</p>
+        <ul>
+          <li>teenusepakkujatele (nt Google Analytics), kelle teenused on vajalikud veebilehe toimimiseks;</li>
+          <li>juhtudel, kus see on nõutud seaduse alusel.</li>
+        </ul>
+
+        <h2>8. Kasutaja õigused</h2>
+        <p>Kasutajal on õigus:</p>
+        <ul>
+          <li>saada teavet oma isikuandmete töötlemise kohta;</li>
+          <li>nõuda oma andmete parandamist või kustutamist;</li>
+          <li>piirata andmete töötlemist;</li>
+          <li>esitada vastuväiteid isikuandmete töötlemise suhtes;</li>
+          <li>võtta tagasi oma nõusolek küpsiste kasutamiseks.</li>
+        </ul>
+        <p>Kõigi päringute korral palume võtta ühendust e-posti teel: <strong>libbanikita@gmail.com</strong>.</p>
+
+        <h2>9. Privaatsuspoliitika muudatused</h2>
+        <p>Meil on õigus käesolevat privaatsuspoliitikat aeg-ajalt uuendada. Muudatused avaldatakse sellel lehel.</p>
+      </article>
+
+      <a class="back-link" href="{{ url_for('index', lang=current_lang) }}#top">← {{ _('На главную') }}</a>
+    </div>
+  </main>
+{% endblock %}

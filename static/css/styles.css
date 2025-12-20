@@ -264,3 +264,42 @@ textarea { resize: vertical; }
 .footer-link:hover { text-decoration: underline; opacity: 1; }
 .footer-sep { opacity: .4; }
 .footer-copy { margin-top: 12px; text-align: center; font-size: 0.9rem; opacity: .8; }
+
+/* Privacy page */
+.content { padding: calc(var(--bar-h) + 24px) 18px 48px; background: #000; }
+.content .container { width: 100%; max-width: 880px; margin: 0 auto; }
+.pp-title {
+  margin: 0 0 8px;
+  color: var(--nl-yellow);
+  font-size: clamp(24px, 4.5vw, 36px);
+  letter-spacing: 0.02em;
+}
+.pp-updated {
+  margin: 0 0 16px;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+}
+.card h2 {
+  margin: 14px 0 8px;
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+.card p { color: var(--text-light); opacity: 0.92; }
+.card ul { margin: 8px 0 12px 18px; color: var(--text-dim); }
+.card li { margin: 6px 0; }
+.back-link {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--nl-yellow);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.back-link:hover { text-decoration: underline; filter: brightness(1.08); }

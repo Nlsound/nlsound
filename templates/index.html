@@ -1,761 +1,123 @@
-<!DOCTYPE html>
-<html lang="{{ current_lang }}">
-<head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-89Q1YSEB38"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-89Q1YSEB38');
-  </script>
-  <meta charset="UTF-8">
-  <title>{{ _('NL Production — видеосъёмка, стримы и техподдержка мероприятий') }}</title>
-  <meta name="description" content="{{ _('NL Production — видеосъёмка, монтаж, прямые трансляции и техническое обеспечение мероприятий в Ида-Вирумаа и по всей Эстонии.') }}">
-  <meta name="keywords" content="{{ _('NL Production, видеосъёмка, стрим, трансляция, монтаж, звук, свет, аренда звука, аренда света, техническое обеспечение мероприятий, Ида-Вирумаа, Kohtla-Järve, Kohtla-Järve video, event technical solutions') }}">
-  <meta name="author" content="NL Production">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="FO2uzMsGZea2TZYACXk8shGQyIJb6K1xOtn4COYqcZo" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="{{ _('NL Production — видеосъёмка и стримы мероприятий') }}">
-  <meta property="og:description" content="{{ _('Профессиональная видеосъёмка, многокамерные трансляции и полный технический продакшн для мероприятий.') }}">
-  <meta property="og:image" content="https://nlproduction.ee/static/images/og-nlproduction.png">
-  <meta property="og:url" content="https://nlproduction.ee/">
-  <meta property="og:type" content="website">
+{% extends "base.html" %}
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ _('NL Production — видеосъёмка и стримы мероприятий') }}">
-  <meta name="twitter:description" content="{{ _('Профессиональная видеосъёмка, многокамерные трансляции и техподдержка.') }}">
-  <meta name="twitter:image" content="https://nlproduction.ee/static/images/og-nlproduction.png">
+{% block title %}{{ _('NL Production') }}{% endblock %}
 
-<!-- Favicons -->
-<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicons/favicon.ico') }}">
-<link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='favicons/favicon-96x96.png') }}">
-<link rel="icon" type="image/png" sizes="48x48" href="{{ url_for('static', filename='favicons/favicon-48x48.png') }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicons/favicon-32x32.png') }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicons/favicon-16x16.png') }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicons/apple-touch-icon.png') }}">
-<link rel="manifest" href="{{ url_for('static', filename='favicons/site.webmanifest') }}">
-<link rel="shortcut icon" href="/favicon.ico">
+{% block meta_description %}
+  {{ _('NL Production — видеосъёмка, монтаж, прямые трансляции и техническое обеспечение мероприятий в Ида-Вирумаа и по всей Эстонии.') }}
+{% endblock %}
 
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-  <style>
-    :root {
-      --nl-black: #000000;
-      --nl-yellow: #ffcf00;
-      --text-light: #f6f6f6;
-      --text-dim: #cfcfcf;
-      --field-bg: rgba(255, 255, 255, 0.04);
-      --field-border: rgba(255, 255, 255, 0.12);
-      --field-focus: rgba(255, 207, 0, 0.65);
-      --container-w: 880px;
-    }
+{% block content %}
+  <section class="hero" id="top">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">{{ _('NL PRODUCTION') }}</h1>
+      <p class="hero-subtitle">{{ _('event technical solutions') }}</p>
+    </div>
+  </section>
 
-    html, body {
-      height: 100%;
-      margin: 0;
-      background: var(--nl-black);
-      color: var(--text-light);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      line-height: 1.5;
-    }
-    html { scroll-behavior: smooth; }
+  <section class="services-section" id="services">
+    <div class="services-container">
+      <h2 class="services-title">{{ _('Услуги') }}</h2>
 
-    a { color: var(--text-light); text-decoration: none; }
-
-    .page-wrapper { display: flex; flex-direction: column; min-height: 100vh; }
-
-    /* Top bar */
-    .top-bar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 14px 24px;
-      z-index: 100;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0));
-      backdrop-filter: blur(2px);
-    }
-    .site-nav { display: none; gap: 16px; align-items: center; }
-    .nav-link { font-size: 14px; color: #fff; opacity: .92; }
-    .nav-link:hover { text-decoration: none; }
-    @media (min-width: 720px) { .site-nav { display: flex; } }
-    @media (max-width: 719px) {
-      .site-nav { display: none !important; }
-      .lang-switcher { display: none; }
-    }
-    .logo-text {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      color: var(--nl-yellow);
-    }
-    .logo-img {
-      height: 32px;
-      width: auto;
-      display: block;
-      object-fit: contain;
-      filter: drop-shadow(0 1px 6px rgba(0,0,0,0.5));
-    }
-
-    .lang-switcher { display: flex; gap: 10px; align-items: center; }
-    .lang-link {
-      font-size: 13px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      color: var(--text-dim);
-      opacity: 0.8;
-      transition: .2s ease;
-      background: rgba(255,255,255,0.04);
-    }
-    .lang-link:hover { color: #fff; opacity: 1; border-color: rgba(255,255,255,0.2); }
-    .active-lang { color: #000; background: var(--nl-yellow); border-color: var(--nl-yellow); opacity: 1; }
-
-    /* Anchor offset for fixed header */
-    .hero, .services-section, .contact-section { scroll-margin-top: 78px; }
-
-    /* Mobile burger and drawer */
-    .burger-btn {
-      display: none;
-      position: fixed;
-      top: 12px;
-      right: 12px;
-      width: 40px; height: 40px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.5);
-      border-radius: 10px;
-      cursor: pointer;
-      z-index: 120;
-    }
-    .burger-btn .lines { position: relative; width: 18px; height: 2px; background: #fff; }
-    .burger-btn .lines::before,
-    .burger-btn .lines::after { content: ""; position: absolute; left: 0; width: 18px; height: 2px; background: #fff; transition: transform .2s ease, top .2s ease, opacity .2s ease; }
-    .burger-btn .lines::before { top: -6px; }
-    .burger-btn .lines::after { top: 6px; }
-    .burger-btn.active .lines { background: transparent; }
-    .burger-btn.active .lines::before { top: 0; transform: rotate(45deg); }
-    .burger-btn.active .lines::after { top: 0; transform: rotate(-45deg); }
-
-    .mobile-drawer { position: fixed; top: 0; right: 0; height: 100vh; width: 270px; background: rgba(0,0,0,0.96); border-left: 1px solid rgba(255,255,255,0.1); transform: translateX(100%); transition: transform .25s ease; z-index: 110; padding: 72px 18px 18px; display: flex; flex-direction: column; gap: 10px; }
-    .mobile-drawer.open { transform: translateX(0); }
-    .mobile-drawer a { color: #fff; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; padding: 12px 10px; border-radius: 10px; }
-    .mobile-drawer a:hover { background: rgba(255,255,255,0.08); }
-    .drawer-lang { margin-top: 0; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; gap: 10px; }
-
-    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); opacity: 0; pointer-events: none; transition: opacity .2s ease; z-index: 105; }
-    .drawer-overlay.show { opacity: 1; pointer-events: auto; }
-
-    @media (max-width: 719px) {
-      .burger-btn { display: grid; place-items: center; }
-    }
-
-    /* HERO */
-    .hero {
-      position: relative;
-      height: 88vh;
-      min-height: 520px;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      background-color: #000;
-      background-image: url("{{ url_for('static', filename='images/hero.jpg') }}");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      text-align: center;
-    }
-    .hero::before {
-      content: "";
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,1) 100%);
-      z-index: 1;
-    }
-    .hero-overlay { display:none; }
-
-    .hero-content {
-      position: relative; z-index: 2;
-      padding: 0 18px;
-      max-width: var(--container-w);
-      margin: 0 auto;
-    }
-    .hero-title {
-      margin: 0 0 8px 0;
-      font-size: clamp(36px, 8vw, 72px);
-      font-weight: 900;
-      letter-spacing: 0.06em;
-      color: var(--nl-yellow);
-      text-shadow: 0 6px 24px rgba(0,0,0,0.6);
-    }
-    .hero-subtitle {
-      margin: 0;
-      font-size: clamp(14px, 2.4vw, 20px);
-      color: #fff;
-      opacity: 0.92;
-      letter-spacing: 0.12em;
-      text-transform: lowercase;
-    }
-
-    /* Services section */
-    .services-section { background: #000; padding: 90px 18px 12px; }
-    .services-container { max-width: var(--container-w); margin: 0 auto; }
-    .services-title { margin: 0 0 18px; text-align: center; font-size: clamp(22px, 4vw, 32px); letter-spacing: 0.02em; }
-    .services-grid { display: grid; grid-template-columns: 1fr; gap: 14px; grid-auto-rows: 1fr; }
-    @media (min-width: 720px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
-    .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 16px; box-shadow: 0 10px 28px rgba(0,0,0,0.28); display: flex; flex-direction: column; height: 100%; }
-    .service-name { margin: 0 0 6px; color: var(--nl-yellow); font-size: 18px; letter-spacing: 0.04em; }
-    .service-text { margin: 0; color: var(--text-dim); font-size: 14px; }
-    .service-list { margin: 8px 0 0; padding-left: 18px; color: var(--text-dim); flex: 1 1 auto; }
-    .service-list li { margin: 6px 0; }
-    .service-subtitle { margin: 10px 0 6px; font-weight: 700; color: #fff; font-size: 14px; letter-spacing: .04em; }
-    .service-more { display: inline-block; margin-top: 8px; color: var(--nl-yellow); font-weight: 800; letter-spacing: .04em; }
-    .service-card .service-more { margin-top: auto; }
-    .service-more:hover { filter: brightness(1.08); text-decoration: underline; }
-
-    /* Services extra (full-width band under grid) */
-    .services-extra { margin: 40px 0 0;}
-    .services-extra-inner { max-width: var(--container-w); margin: 0 auto; padding: 18px; }
-    .services-extra h3 { margin: 0 0 18px; font-size: clamp(18px, 3.4vw, 32px); letter-spacing: .04em; text-align: center; }
-    .services-extra p { margin: 0; color: var(--text-dim); font-size: clamp(15px, 2.6vw, 16px); text-align: center; }
-
-    /* Contact section */
-    .contact-section { background: #000; padding: 76px 18px 72px; }
-    .contact-container { max-width: var(--container-w); margin: 0 auto; }
-
-    .contact-header { text-align: center; }
-    .contact-section h2 {
-      margin: 0 0 6px 0;
-      font-size: clamp(24px, 4.5vw, 36px);
-      letter-spacing: 0.02em;
-    }
-    .contact-text { color: var(--text-dim); margin: 0 auto 22px; max-width: 680px; }
-
-    .alert-success {
-      background: rgba(18, 120, 36, 0.18);
-      border: 1px solid rgba(18, 120, 36, 0.35);
-      color: #c9f7d8;
-      padding: 12px 14px;
-      border-radius: 10px;
-      margin-bottom: 16px;
-    }
-
-    .form-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 22px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
-      backdrop-filter: blur(3px);
-    }
-
-    .contact-form { display: grid; gap: 16px; }
-
-    .form-row { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    @media (min-width: 900px) {
-      .form-row.cols-2 { grid-template-columns: 1fr 1fr; }
-    }
-
-    .form-group { display: flex; flex-direction: column; gap: 8px; }
-
-    label { font-size: 13px; color: var(--text-dim); }
-    input, textarea {
-      color: #fff;
-      background: var(--field-bg);
-      border: 1px solid var(--field-border);
-      border-radius: 12px;
-      padding: 12px 14px;
-      outline: none;
-      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease, transform .06s ease;
-    }
-    input { height: 44px; }
-    textarea { min-height: 120px; resize: vertical; }
-
-    input::placeholder, textarea::placeholder { color: #9e9e9e; }
-    input:focus, textarea:focus {
-      border-color: var(--field-focus);
-      box-shadow: 0 0 0 3px rgba(255,207,0,0.16);
-      background: rgba(255,255,255,0.06);
-    }
-
-    .btn-row { display: grid; grid-template-columns: 1fr; }
-
-    .btn-submit {
-      justify-self: start;
-      margin-top: 10px;
-      appearance: none;
-      border: 1px solid rgba(0,0,0,0.08);
-      background: var(--nl-yellow);
-      color: #000;
-      font-weight: 800;
-      letter-spacing: .06em;
-      padding: 12px 20px;
-      height: 46px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform .06s ease, filter .18s ease, box-shadow .22s ease;
-      box-shadow: 0 10px 28px rgba(255,207,0,0.18);
-    }
-    .btn-submit:hover { filter: brightness(1.02); box-shadow: 0 12px 36px rgba(255,207,0,0.26); }
-    .btn-submit:active { transform: translateY(1px); }
-
-    /* reduce extra space */
-    .hero { margin-bottom: 12px; }
-
-    /* Force-hide header lang-switcher on mobile; show only inside drawer */
-    @media (max-width: 719px) {
-      header.top-bar .lang-switcher { display: none !important; }
-    }
-  </style>
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@graph": [
-  {
-  "@type": [
-  "Organization",
-  "LocalBusiness"
-  ],
-  "@id": "https://nlproduction.ee/#org",
-  "name": "NL Production",
-  "legalName": "Nlsound OÜ",
-  "alternateName": [
-  "NL Production",
-  "Nlsound"
-  ],
-  "url": "https://nlproduction.ee/",
-  "description": "NL Production (Nlsound OÜ) — техническое обеспечение мероприятий: аренда звука, света, техники, видеотрансляции и стриминг по всей Эстонии с акцентом на Ида-Вирумаа.",
-  "address": {
-  "@type": "PostalAddress",
-  "addressCountry": "EE",
-  "addressRegion": "Ida-Virumaa",
-  "addressLocality": "Ida-Virumaa"
-  },
-  "areaServed": [
-  {"@type": "Place", "name": "Ida-Virumaa"},
-  {"@type": "Place", "name": "Кохтла-Ярве"},
-  {"@type": "Place", "name": "Йыхви"},
-  {"@type": "Place", "name": "Нарва"},
-  {"@type": "Place", "name": "Силламяэ"},
-  {"@type": "Place", "name": "Нарва-Йыэсуу"},
-  {"@type": "Place", "name": "Кивиыли"},
-  {"@type": "Place", "name": "Пюсси"},
-  {"@type": "Place", "name": "Таллинн"},
-  {"@type": "Place", "name": "Тарту"},
-  {"@type": "Place", "name": "Пярну"},
-  {"@type": "Place", "name": "Раквере"},
-  {"@type": "Place", "name": "Вильянди"}
-  ],
-  "knowsAbout": [
-  "аренда звука Ида-Вирумаа",
-  "аренда света",
-  "аренда оборудования",
-  "стриминг мероприятий",
-  "техническое обеспечение",
-  "многокамерные трансляции",
-  "оборудование для концертов",
-  "оборудование для свадеб",
-  "оборудование для турниров",
-  "звуковое оформление",
-  "световое оформление"
-  ]
-  }
-  ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-  {
-  "@type": "Question",
-  "name": "В каких городах Эстонии вы предоставляете аренду звука, света и техники?",
-  "acceptedAnswer": {
-  "@type": "Answer",
-  "text": "NL Production работает по всей Эстонии, включая Кохтла-Ярве, Йыхви, Нарву, Силламяэ, Нарва-Йыэсуу, Таллинн, Тарту, Пярну и Раквере. Основной регион — Ида-Вирумаа."
-  }
-  },
-  {
-  "@type": "Question",
-  "name": "Какие услуги вы предоставляете?",
-  "acceptedAnswer": {
-  "@type": "Answer",
-  "text": "Аренда звука, аренда света, аренда сценического оборудования, аренда камер, стриминг, видеотрансляции, техническое обеспечение мероприятий и технический продакшен."
-  }
-  },
-  {
-  "@type": "Question",
-  "name": "Можно ли заказать стриминг мероприятия?",
-  "acceptedAnswer": {
-  "@type": "Answer",
-  "text": "Да, мы выполняем многокамерный стриминг концертов, турниров, праздников и других мероприятий по всей Эстонии."
-  }
-  },
-  {
-  "@type": "Question",
-  "name": "Предоставляете ли вы технический продакшен?",
-  "acceptedAnswer": {
-  "@type": "Answer",
-  "text": "Да, мы предлагаем полный технический продакшен мероприятий — проект, монтаж, настройка, звук, свет и трансляции."
-  }
-  }
-  ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "EventService",
-  "@id": "https://nlproduction.ee/#eventservice",
-  "name": "NL Production — Event Technical Services",
-  "provider": {
-  "@type": "Organization",
-  "@id": "https://nlproduction.ee/#org"
-  },
-  "url": "https://nlproduction.ee/",
-  "description": "Профессиональное техническое обеспечение мероприятий: звук, свет, техника, стриминг, видеотрансляции и продакшен.",
-  "areaServed": [
-  {"@type": "Place", "name": "Ida-Virumaa"},
-  {"@type": "Place", "name": "Кохтла-Ярве"},
-  {"@type": "Place", "name": "Йыхви"},
-  {"@type": "Place", "name": "Нарва"},
-  {"@type": "Place", "name": "Силламяэ"},
-  {"@type": "Place", "name": "Таллинн"},
-  {"@type": "Place", "name": "Тарту"},
-  {"@type": "Country", "name": "Estonia"}
-  ],
-  "serviceType": [
-  "��ренда звука",
-  "Аренда света",
-  "Стриминг",
-  "Техническое обеспечение",
-  "Аренда оборудования",
-  "Многокамерные видеотрансляции"
-  ]
-  }
-  </script>
-</head>
-<body>
-  <div class="page-wrapper">
-    <header class="top-bar">
-      <div class="logo-text" aria-label="{{ _('Логотип') }}">
-        <a href="{{ url_for('index', lang=current_lang) }}#top" aria-label="{{ _('На главную') }}">
-          <img class="logo-img" src="{{ url_for('static', filename='images/logo.webp') }}" alt="{{ _('NL Production logo') }}">
-        </a>
-      </div>
-
-          <nav class="site-nav">
-      <a href="#top" class="nav-link active" aria-current="page">{{ _('Главная') }}</a>
-      <a href="#services" class="nav-link">{{ _('Услуги') }}</a>
-      <a href="#contact" class="nav-link">{{ _('Контакт') }}</a>
-    </nav>
-
-      <nav class="lang-switcher">
-        {% for lang in LANGUAGES %}
-          <a
-            href="{{ url_for('index', lang=lang) }}"
-            class="lang-link {% if lang == current_lang %}active-lang{% endif %}"
-            aria-current="{% if lang == current_lang %}true{% else %}false{% endif %}"
-          >
-            {{ lang.upper() }}
+      <div class="services-grid">
+        <div class="service-card">
+          <h3 class="service-name">{{ _('Звук') }}</h3>
+          <ul class="service-list">
+            <li>{{ _('Аренда звукового оборудования') }}</li>
+            <li>{{ _('Озвучивание мероприятий') }}</li>
+            <li>{{ _('Саунд‑инженер, настройка систем') }}</li>
+          </ul>
+          <a class="service-more" href="{{ url_for('service', slug='sound', lang=current_lang) }}">
+            {{ _('Подробнее') }} →
           </a>
-        {% endfor %}
-      </nav>
-      <button class="burger-btn" id="burgerBtn" aria-label="{{ _('Открыть меню') }}" aria-controls="mobileDrawer" aria-expanded="false">
-        <span class="lines"></span>
-      </button>
-    </header>
+        </div>
 
-
-
-    <div class="drawer-overlay" id="drawerOverlay"></div>
-    <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true" aria-label="{{ _('Мобильное меню') }}">
-      <div class="drawer-lang">
-        {% for lang in LANGUAGES %}
-          <a
-            href="{{ url_for('index', lang=lang) }}"
-            class="lang-link {% if lang == current_lang %}active-lang{% endif %}"
-            aria-current="{% if lang == current_lang %}true{% else %}false{% endif %}"
-          >
-            {{ lang.upper() }}
+        <div class="service-card">
+          <h3 class="service-name">{{ _('Свет') }}</h3>
+          <ul class="service-list">
+            <li>{{ _('Аренда светового оборудования') }}</li>
+            <li>{{ _('Световое оформление и шоу') }}</li>
+            <li>{{ _('Программирование и управление') }}</li>
+          </ul>
+          <a class="service-more" href="{{ url_for('service', slug='light', lang=current_lang) }}">
+            {{ _('Подробнее') }} →
           </a>
-        {% endfor %}
-      </div>
-      <a href="#top" class="nav-link">{{ _('Главная') }}</a>
-      <a href="#services" class="nav-link">{{ _('Услуги') }}</a>
-      <a href="#contact" class="nav-link">{{ _('Контакт') }}</a>
-    </aside>
+        </div>
 
-    <section class="hero" id="top">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1 class="hero-title">{{ _('NL PRODUCTION') }}</h1>
-        <p class="hero-subtitle">{{ _('event technical solutions') }}</p>
-      </div>
-    </section>
-
-   <section class="services-section" id="services">
-  <div class="services-container">
-    <h2 class="services-title">{{ _('Услуги') }}</h2>
-
-    <div class="services-grid">
-      <div class="service-card">
-        <h3 class="service-name">{{ _('Звук') }}</h3>
-        <ul class="service-list">
-          <li>{{ _('Аренда звукового оборудования') }}</li>
-          <li>{{ _('Озвучивание мероприятий') }}</li>
-          <li>{{ _('Саунд‑инженер, настройка систем') }}</li>
-        </ul>
-        <a class="service-more" href="{{ url_for('service', slug='sound', lang=current_lang) }}">
-          {{ _('Подробнее') }} →
-        </a>
-      </div>
-
-      <div class="service-card">
-        <h3 class="service-name">{{ _('Свет') }}</h3>
-        <ul class="service-list">
-          <li>{{ _('Аренда светового оборудования') }}</li>
-          <li>{{ _('Световое оформление и шоу') }}</li>
-          <li>{{ _('Программирование и управление') }}</li>
-        </ul>
-        <a class="service-more" href="{{ url_for('service', slug='light', lang=current_lang) }}">
-          {{ _('Подробнее') }} →
-        </a>
-      </div>
-
-      <div class="service-card">
-        <h3 class="service-name">{{ _('Видео') }}</h3>
-        <ul class="service-list">
-          <li>{{ _('Трансляции и стриминг') }}</li>
-          <li>{{ _('Многокамерные трансляции') }}</li>
-          <li>{{ _('Площадки YouTube / Facebook / RTMP') }}</li>
-        </ul>
-        <a class="service-more" href="{{ url_for('service', slug='video', lang=current_lang) }}">
-          {{ _('Подробнее') }} →
-        </a>
+        <div class="service-card">
+          <h3 class="service-name">{{ _('Видео') }}</h3>
+          <ul class="service-list">
+            <li>{{ _('Трансляции и стриминг') }}</li>
+            <li>{{ _('Многокамерные трансляции') }}</li>
+            <li>{{ _('Площадки YouTube / Facebook / RTMP') }}</li>
+          </ul>
+          <a class="service-more" href="{{ url_for('service', slug='video', lang=current_lang) }}">
+            {{ _('Подробнее') }} →
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-    <div class="services-extra" aria-labelledby="extra-title">
-      <div class="services-extra-inner">
-        <h3 id="extra-title">{{ _('Дополнительно') }}</h3>
-        <p>{{ _('Комплексный технический продакшн мероприятий: проектирование решений, подбор оборудования под формат и бюджет, монтаж и демонтаж, работа с артистами и организаторами, поддержка репетиций и нестандартных задач. Если проект выходит за стандартные рамки — мы всегда готовы обсудить детали и найти оптимальное решение.') }}</p>
-        <p style="margin-top:30px;">
-          <a class="btn-submit" href="#contact">{{ _('Связаться с нами') }}</a>
+  <div class="services-extra" aria-labelledby="extra-title">
+    <div class="services-extra-inner">
+      <h3 id="extra-title">{{ _('Дополнительно') }}</h3>
+      <p>{{ _('Комплексный технический продакшн мероприятий: проектирование решений, подбор оборудования под формат и бюджет, монтаж и демонтаж, работа с артистами и организаторами, поддержка репетиций и нестандартных задач. Если проект выходит за стандартные рамки — мы всегда готовы обсудить детали и найти оптимальное решение.') }}</p>
+      <p style="margin-top:30px;">
+        <a class="btn-submit" href="#contact">{{ _('Связаться с нами') }}</a>
+      </p>
+    </div>
+  </div>
+
+  <section class="contact-section" id="contact">
+    <div class="contact-container">
+      <div class="contact-header">
+        <h2>{{ _('Связаться с нами') }}</h2>
+        <p class="contact-text">
+          {{ _('Видео, свет, звук, трансляции — опишите задачу, и мы вернёмся к вам.') }}
         </p>
       </div>
+
+      {% if message_sent %}
+        <div class="alert-success">
+          {{ _('Спасибо! Заявка отправлена, мы свяжемся с вами.') }}
+        </div>
+      {% endif %}
+
+      <div class="form-card">
+        <form method="post" class="contact-form" action="{{ url_for('index', lang=current_lang) }}">
+          <div class="form-row cols-2">
+            <div class="form-group">
+              <label for="name">{{ _('Имя') }}</label>
+              <input type="text" id="name" name="name" placeholder="{{ _('Введите имя') }}">
+            </div>
+            <div class="form-group">
+              <label for="phone">{{ _('Номер телефона') }}</label>
+              <input type="tel" id="phone" name="phone" placeholder="{{ _('Ваш телефон') }}">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">{{ _('E-mail') }}</label>
+              <input type="email" id="email" name="email" required placeholder="{{ _('name@example.com') }}">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="message">{{ _('Сообщение') }}</label>
+              <textarea id="message" name="message" rows="4" placeholder="{{ _('Коротко опишите задачу') }}"></textarea>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button type="submit" class="btn-submit">
+              {{ _('Отправить') }}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-
-    <section class="contact-section" id="contact">
-      <div class="contact-container">
-        <div class="contact-header">
-          <h2>{{ _('Связаться с нами') }}</h2>
-          <p class="contact-text">
-            {{ _('Видео, свет, звук, трансляции — опишите задачу, и мы вернёмся к вам.') }}
-          </p>
-        </div>
-
-        {% if message_sent %}
-          <div class="alert-success">
-            {{ _('Спасибо! Заявка отправлена, мы свяжемся с вами.') }}
-          </div>
-        {% endif %}
-
-        <div class="form-card">
-          <form method="post" class="contact-form" action="{{ url_for('index', lang=current_lang) }}">
-            <div class="form-row cols-2">
-              <div class="form-group">
-                <label for="name">{{ _('Имя') }}</label>
-                <input type="text" id="name" name="name" placeholder="{{ _('Введите имя') }}">
-              </div>
-              <div class="form-group">
-                <label for="phone">{{ _('Номер телефона') }}</label>
-                <input type="tel" id="phone" name="phone" placeholder="{{ _('Ваш телефон') }}">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">{{ _('E-mail') }}</label>
-                <input type="email" id="email" name="email" required placeholder="{{ _('name@example.com') }}">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="message">{{ _('Сообщение') }}</label>
-                <textarea id="message" name="message" rows="4" placeholder="{{ _('Коротко опишите задачу') }}"></textarea>
-              </div>
-            </div>
-
-            <div class="btn-row">
-              <button type="submit" class="btn-submit">
-                {{ _('Отправить') }}
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-  <footer class="site-footer">
-      <div class="footer-container">
-        <div class="footer-main">
-          <div class="footer-brand">{{ _('NL Production') }}</div>
-          <div class="footer-desc">{{ _('Event technical solutions / Технический продакшн мероприятий') }}</div>
-          <div class="footer-contact">
-            <a class="footer-link" href="mailto:libbanikita@gmail.com">libbanikita@gmail.com</a>
-            <span class="footer-sep">•</span>
-            <a class="footer-link" href="tel:+37258109235">+372 5810 9235</a>
-            <span class="footer-sep">•</span>
-            <span>{{ _('Ida-Virumaa, Estonia') }}</span>
-          </div>
-          <div class="footer-copy">© {{ _('NL Production') }}, <span id="year"></span>. {{ _('Все права защищены.') }}</div>
-        </div>
-      </div>
-    </footer>
-  </div>
-<script>
-    (function(){
-      const btn = document.getElementById('burgerBtn');
-      const drawer = document.getElementById('mobileDrawer');
-      const overlay = document.getElementById('drawerOverlay');
-      if (!btn || !drawer || !overlay) return;
-
-      function openDrawer(){
-        drawer.classList.add('open');
-        overlay.classList.add('show');
-        btn.classList.add('active');
-        btn.setAttribute('aria-expanded','true');
-        document.documentElement.style.overflow = 'hidden';
-      }
-      function closeDrawer(){
-        drawer.classList.remove('open');
-        overlay.classList.remove('show');
-        btn.classList.remove('active');
-        btn.setAttribute('aria-expanded','false');
-        document.documentElement.style.overflow = '';
-      }
-
-      btn.addEventListener('click', () => {
-        if (drawer.classList.contains('open')) closeDrawer();
-        else openDrawer();
-      });
-      overlay.addEventListener('click', closeDrawer);
-      drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
-    })();
-  </script>
-<script>
-  // Navigation active state handling for single-page sections (top, services, contact)
-  (function () {
-    const HEADER_OFFSET = 100; // approximate header height
-
-    const navLinks = Array.from(document.querySelectorAll('.site-nav .nav-link, .mobile-drawer .nav-link'));
-    if (!navLinks.length) return;
-
-    // Map section id -> links pointing to it
-    const idToLinks = {};
-    function extractIdFromHref(href) {
-      if (!href) return null;
-      const idx = href.indexOf('#');
-      if (idx === -1) return null;
-      const id = href.slice(idx + 1).trim();
-      return id || null;
-    }
-
-    navLinks.forEach((a) => {
-      const id = extractIdFromHref(a.getAttribute('href'));
-      if (!id) return;
-      (idToLinks[id] ||= []).push(a);
-    });
-
-    // Sections present on the page (only those existing in DOM)
-    const sectionOrder = ['top', 'services', 'contact'];
-    const sections = sectionOrder
-      .map((id) => ({ id, el: document.getElementById(id) }))
-      .filter((s) => s.el);
-
-    function clearActive() {
-      navLinks.forEach((a) => {
-        a.classList.remove('active');
-        a.removeAttribute('aria-current');
-      });
-    }
-
-    function setActive(id) {
-      clearActive();
-      const links = idToLinks[id];
-      if (links) links.forEach((a) => { a.classList.add('active'); a.setAttribute('aria-current', 'page'); });
-    }
-
-    function setActiveFromHash() {
-      const id = (location.hash || '').replace('#', '');
-      if (id && idToLinks[id]) {
-        setActive(id);
-        return true;
-      }
-      return false;
-    }
-
-    let ticking = false;
-    function updateOnScroll() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        // Determine the last section that has passed the header offset
-        let current = sections.length ? sections[0].id : null;
-        for (const s of sections) {
-          const r = s.el.getBoundingClientRect();
-          if (r.top - HEADER_OFFSET <= 0) current = s.id;
-        }
-        if (current) setActive(current);
-        ticking = false;
-      });
-    }
-
-    // Initial state
-    clearActive();
-    if (!setActiveFromHash()) updateOnScroll();
-
-    // Update on hash changes
-    window.addEventListener('hashchange', () => {
-      // Give the browser a moment to jump to the anchor, then compute
-      setTimeout(() => { setActiveFromHash() || updateOnScroll(); }, 0);
-    }, { passive: true });
-
-    // Update while scrolling/resizing
-    window.addEventListener('scroll', updateOnScroll, { passive: true });
-    window.addEventListener('resize', updateOnScroll, { passive: true });
-
-    // Also nudge after nav link clicks (same-page anchors)
-    navLinks.forEach((a) => {
-      a.addEventListener('click', () => {
-        setTimeout(() => { setActiveFromHash() || updateOnScroll(); }, 50);
-      });
-    });
-  })();
-</script>
-<script>
-  // Temporary override: clicking .service-more scrolls to contact section
-  (function () {
-    const links = document.querySelectorAll('.service-more');
-    const target = document.getElementById('contact');
-    if (!links.length || !target) return;
-    links.forEach((a) => {
-      a.addEventListener('click', function (e) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-  })();
-</script>
-</body>
-</html>
+  </section>
+{% endblock %}

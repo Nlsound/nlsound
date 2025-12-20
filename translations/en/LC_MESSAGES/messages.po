@@ -338,3 +338,12 @@ msgstr "Teardown and deliverables (if needed)"
 #~ msgid "Графика, запись, мониторинг"
 #~ msgstr "Graphics, recording, monitoring"
 
+msgid "NL Production"
+msgstr "NL Production"
+
+msgid "Privacy Policy"
+msgstr "Privacy Policy"
+
+msgid "Service"
+msgstr "Service"
+

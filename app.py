@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, g, url_for, flash, redirect, send_from_directory
+from flask import Flask, render_template, request, g, url_for, flash, redirect, send_from_directory, jsonify
 from flask_babel import Babel, gettext, get_locale
 import os
 import requests
@@ -108,9 +108,14 @@ def index():
         email = (request.form.get('email') or '').strip()
         message = (request.form.get('message') or '').strip()
 
+        is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+
         # Валидация обязательных полей
         if not email or not message:
-            flash(gettext('Пожалуйста, укажите e-mail и сообщение.'), 'error')
+            msg = gettext('Пожалуйста, укажите e-mail и сообщение.')
+            if is_ajax:
+                return jsonify(ok=False, message=msg), 400
+            flash(msg, 'error')
             return redirect(url_for('index', lang=g.get('current_lang', app.config.get('BABEL_DEFAULT_LOCALE', 'ru'))))
 
         try:
@@ -127,11 +132,17 @@ def index():
 
             send_email_via_mailgun(subject, text)
 
-            flash(gettext('Спасибо! Заявка отправлена, мы свяжемся с вами.'), 'success')
+            msg = gettext('Спасибо! Заявка отправлена, мы свяжемся с вами.')
+            if is_ajax:
+                return jsonify(ok=True, message=msg), 200
+            flash(msg, 'success')
             return redirect(url_for('index', lang=g.get('current_lang', app.config.get('BABEL_DEFAULT_LOCALE', 'ru'))))
         except Exception:
             app.logger.exception("Failed to send contact message via Mailgun")
-            flash(gettext('Не удалось отправить сообщение. Попробуйте позже.'), 'error')
+            msg = gettext('Не удалось отправить сообщение. Попробуйте позже.')
+            if is_ajax:
+                return jsonify(ok=False, message=msg), 500
+            flash(msg, 'error')
             return redirect(url_for('index', lang=g.get('current_lang', app.config.get('BABEL_DEFAULT_LOCALE', 'ru'))))
 
     return render_template('index.html')
@@ -168,6 +179,12 @@ def service(slug: str):
         return redirect(url_for('index', lang=g.get('current_lang', app.config.get('BABEL_DEFAULT_LOCALE', 'ru'))))
 
     return render_template('service_detail.html', slug=slug)
+
+
+@app.route('/privacy')
+def privacy():
+    """Страница политики конфиденциальности."""
+    return render_template('privacy.html')
 
 
 if __name__ == '__main__':
