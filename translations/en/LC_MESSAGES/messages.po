@@ -166,6 +166,14 @@ msgstr "Briefly describe your project"
 msgid "Отправить"
 msgstr "Send"
 
+#: templates/index.html:448
+msgid "Дополнительно"
+msgstr "More"
+
+#: templates/index.html:450
+msgid "Комплексный технический продакшн мероприятий: проектирование решений, подбор оборудования под формат и бюджет, монтаж и демонтаж, работа с артистами и организаторами, поддержка репетиций и нестандартных задач. Если проект выходит за стандартные рамки — мы всегда готовы обсудить детали и найти оптимальное решение."
+msgstr "Comprehensive technical production for events: solution design, equipment selection to fit format and budget, setup and teardown, working with artists and organizers, rehearsal support and non‑standard tasks. If your project goes beyond standard scenarios, we’re ready to discuss the details and find the optimal solution."
+
 #: templates/service_detail.html:5
 #, fuzzy
 msgid "Услуга"

@@ -138,7 +138,7 @@
     .mobile-drawer.open { transform: translateX(0); }
     .mobile-drawer a { color: #fff; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; padding: 12px 10px; border-radius: 10px; }
     .mobile-drawer a:hover { background: rgba(255,255,255,0.08); }
-    .drawer-lang { margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; gap: 10px; }
+    .drawer-lang { margin-top: 0; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; gap: 10px; }
 
     .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); opacity: 0; pointer-events: none; transition: opacity .2s ease; z-index: 105; }
     .drawer-overlay.show { opacity: 1; pointer-events: auto; }
@@ -424,7 +424,7 @@
   {"@type": "Country", "name": "Estonia"}
   ],
   "serviceType": [
-  "Аренда звука",
+  "��ренда звука",
   "Аренда света",
   "Стриминг",
   "Техническое обеспечение",
@@ -469,9 +469,6 @@
 
     <div class="drawer-overlay" id="drawerOverlay"></div>
     <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true" aria-label="{{ _('Мобильное меню') }}">
-      <a href="#top" class="nav-link">{{ _('Главная') }}</a>
-      <a href="#services" class="nav-link">{{ _('Услуги') }}</a>
-      <a href="#contact" class="nav-link">{{ _('Контакт') }}</a>
       <div class="drawer-lang">
         {% for lang in LANGUAGES %}
           <a
@@ -483,6 +480,9 @@
           </a>
         {% endfor %}
       </div>
+      <a href="#top" class="nav-link">{{ _('Главная') }}</a>
+      <a href="#services" class="nav-link">{{ _('Услуги') }}</a>
+      <a href="#contact" class="nav-link">{{ _('Контакт') }}</a>
     </aside>
 
     <section class="hero" id="top">
@@ -513,7 +513,7 @@
       <div class="service-card">
         <h3 class="service-name">{{ _('Свет') }}</h3>
         <ul class="service-list">
-          <li>{{ _('Аренда светового оборудования') }}</li>
+          <li>{{ _('Аренда ��ветового оборудования') }}</li>
           <li>{{ _('Световое оформление и шоу') }}</li>
           <li>{{ _('Программирование и управление') }}</li>
         </ul>
@@ -540,7 +540,7 @@
     <div class="services-extra" aria-labelledby="extra-title">
       <div class="services-extra-inner">
         <h3 id="extra-title">{{ _('Дополнительно') }}</h3>
-        <p>{{ _('Комплексный технический продакшн мероприятий: проектирование решений, подбор оборудования под формат и бюджет, монтаж и демонтаж, работа с артистами и организаторами, поддержка репетиций и нестандартных задач. Если проект выходит за стандартные рамки — мы всегда готовы обсудить детали и найти оптимальное решение.') }}</p>
+        <p>{{ _('Комплексный технический продакшн мероприятий: проектирование решений, подбор оборудования под формат и бюджет, монтаж и демонтаж, работа с артистами и организаторами, поддержка репетиций и нестандартных задач. Если проект выходит за стандартные ра��ки — мы всегда готовы обсудить детали и найти оптимальное решение.') }}</p>
         <p style="margin-top:30px;">
           <a class="btn-submit" href="#contact">{{ _('Связаться с нами') }}</a>
         </p>
@@ -731,6 +731,20 @@
     navLinks.forEach((a) => {
       a.addEventListener('click', () => {
         setTimeout(() => { setActiveFromHash() || updateOnScroll(); }, 50);
+      });
+    });
+  })();
+</script>
+<script>
+  // Temporary override: clicking .service-more scrolls to contact section
+  (function () {
+    const links = document.querySelectorAll('.service-more');
+    const target = document.getElementById('contact');
+    if (!links.length || !target) return;
+    links.forEach((a) => {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
   })();

@@ -58,14 +58,12 @@ msgid "Звук"
 msgstr "Heli"
 
 #: templates/index.html:422
-#, fuzzy
 msgid "Аренда звукового оборудования"
-msgstr "HELISEADMETE RENT"
+msgstr "Heliseadmete rent"
 
 #: templates/index.html:423
-#, fuzzy
 msgid "Озвучивание мероприятий"
-msgstr "HELINDUS ERINEVA SUURUSEGA ÜRITUSTELE:"
+msgstr "Helindus üritustele"
 
 #: templates/index.html:424
 msgid "Саунд‑инженер, настройка систем"
@@ -82,19 +80,16 @@ msgid "Свет"
 msgstr "Valgus"
 
 #: templates/index.html:431
-#, fuzzy
 msgid "Аренда светового оборудования"
-msgstr "VALGUSSEADMETE RENT"
+msgstr "Valgusseadmete rent"
 
 #: templates/index.html:432
-#, fuzzy
 msgid "Световое оформление и шоу"
-msgstr "SÜNDMUSTE VALGUSLAHENDUSED"
+msgstr "Valguskujundus ja showd"
 
 #: templates/index.html:433
-#, fuzzy
 msgid "Программирование и управление"
-msgstr "VALGUSPROGRAMMEERIMINE JA -JUHTIMINE"
+msgstr "Valgusprogrammeerimine ja -juhtimine"
 
 #: templates/index.html:438 templates/service_detail.html:8
 #: templates/service_detail.html:73
@@ -102,9 +97,8 @@ msgid "Видео"
 msgstr "Video"
 
 #: templates/index.html:440
-#, fuzzy
 msgid "Трансляции и стриминг"
-msgstr "OTSEÜLEKANDED JA SÜNDMUSTЕ STRIIM"
+msgstr "Otseülekanded ja striim"
 
 #: templates/index.html:441
 msgid "Многокамерные трансляции"
@@ -172,6 +166,14 @@ msgstr "Kirjelda lühidalt oma projekti"
 #: templates/index.html:503 templates/service_detail.html:170
 msgid "Отправить"
 msgstr "Saada"
+
+#: templates/index.html:448
+msgid "Дополнительно"
+msgstr "Lisaks"
+
+#: templates/index.html:450
+msgid "Комплексный технический продакшн мероприятий: проектирование решений, подбор оборудования под формат и бюджет, монтаж и демонтаж, работа с артистами и организаторами, поддержка репетиций и нестандартных задач. Если проект выходит за стандартные рамки — мы всегда готовы обсудить детали и найти оптимальное решение."
+msgstr "Sündmuste terviklik tehniline produktsioon: lahenduste projekteerimine, seadmete valik vastavalt formaadile ja eelarvele, paigaldus ja demontaaž, töö artistide ja korraldajatega, proovide tugi ning mittestandardsete ülesannete lahendamine. Kui projekt ületab tavapärase raami, arutame hea meelega detaile ja leiame optimaalse lahenduse."
 
 #: templates/service_detail.html:5
 #, fuzzy
